@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+/* :root {
+  --border-color: #1CB8EA;
+  --main-color: linear-gradient(to right, #02CACB , #069DCF);
+  --hover-color: linear-gradient(to right, #069DCF , #02CACB);
+  --border-hover-color: #245CA8;
+} */
+:root {
+  --main-color: #1983DA;
+  --hover-color: #1983DA;
+}
+/* For text color */
+table.table td h2 span,
+.slick-next:before,
+.slick-prev:before,
+.main-nav .has-submenu.active .submenu li.active > a,
+.clinic-booking a,
+.load-more a,
+.custom_check .checkmark::after,
+a:hover,
+.text-primary,
+.dropdown-menu > li > a.text-primary,
+.terms-accept a,
+.exist-customer a,
+.booking-total ul li .total-cost,
+.doc-department,
+.user-tabs .nav-tabs.nav-tabs-bottom > li > a.active,
+.user-tabs .nav-tabs.nav-tabs-bottom > li > a.active:hover,
+.user-tabs .nav-tabs.nav-tabs-bottom > li > a.active:focus,
+.exp-year,
+.speicality-img span i,
+.view-btn,
+.header-navbar-rht li a.header-login,
+.main-nav > li.active > a {
+  color: var(--main-color)!important;
+}
+.load-more a:hover,
+.main-nav .has-submenu.active .submenu li.active > a:hover,
+.clinic-booking a.view-pro-btn:hover,
+.clinic-booking a.view-pro-btn:focus,
+.speicality-img span i:hover,
+.view-btn:hover,
+.header-navbar-rht li a.header-login:hover,
+.main-nav > li.active > a:hover {
+  color: var(--hover-color)!important;
+}
+/* For border color */
+.btn-primary,
+.section-header .btn-primary,
+.view-inv-btn,
+.success-cont i,
+.login-btn,
+.load-more a,
+.btn-search .btn,
+.payment-radio input:checked ~ .checkmark,
+.submit-section .submit-btn,
+.time-slot li .timing.selected,
+.nav-tabs.nav-tabs-bottom > li > a.active,
+.nav-tabs.nav-tabs-bottom > li > a.active:hover,
+.nav-tabs.nav-tabs-bottom > li > a.active:focus,
+.clinic-booking a.apt-btn,
+.book-btn,
+.view-btn,
+.search-box .search-btn,
+.header-navbar-rht li a.header-login {
+  border-color: var(--main-color)!important;
+}
+.btn-primary:hover,
+.section-header .btn-primary:hover,
+.view-inv-btn:hover,
+.submit-section .submit-btn:hover,
+.load-more a:hover,
+.btn-search .btn:hover,
+.login-btn:hover,
+.clinic-booking a.view-pro-btn:hover,
+.clinic-booking a.view-pro-btn:focus,
+.clinic-booking a.apt-btn:hover,
+.book-btn:hover,
+.view-btn:hover,
+.search-box .search-btn:hover,
+.header-navbar-rht li a.header-login:hover {
+  border-color: var(--hover-color)!important;
+}
+/* For background color */
+.patient-info-modal .modal-header,
+.btn-primary,
+.section-header .btn-primary,
+.view-inv-btn,
+.success-cont i,
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus,
+.login-btn,
+.btn-search .btn,
+.payment-radio input:checked ~ .checkmark::after,
+.submit-section .submit-btn,
+.time-slot li .timing.selected,
+.clinic-booking a.apt-btn,
+.slick-dots li.slick-active button,
+.book-btn,
+.about-content a,
+.search-box .search-btn {
+  background: var(--main-color)!important;
+}
+.btn-primary:hover,
+.section-header .btn-primary:hover,
+.view-inv-btn:hover,
+.submit-section .submit-btn:hover,
+.btn-search .btn:hover,
+.login-btn:hover,
+.clinic-booking a.apt-btn:hover,
+.slick-dots li.slick-active button:hover,
+.book-btn:hover,
+.about-content a:hover,
+.search-box .search-btn:hover {
+  background: var(--hover-color)!important;
+}
+/* Custom CSS for white color when hover */
+.nav-tabs.nav-tabs-solid.nav-tabs-rounded > li > a.active,
+.nav-tabs.nav-tabs-solid.nav-tabs-rounded > li > a.active:hover,
+.nav-tabs.nav-tabs-solid.nav-tabs-rounded > li > a.active:focus,
+.patient-info-modal .modal-header h4,
+.btn-primary:hover,
+.section-header .btn-primary:hover,
+.view-inv-btn:hover,
+.submit-section .submit-btn:hover,
+.time-slot li .timing.selected:hover,
+.about-content a:hover,
+.clinic-booking a.apt-btn,
+.slick-next:hover:before,
+.slick-prev:hover:before,
+.login-btn:hover,
+.book-btn:hover,
+.clinic-booking a.apt-btn:hover {
+  color: #fff!important;
+}
+
+/* Custom Css */
+.social-login > a.facebook:hover{
+ color: #fff !important;
+}
+
+.login-wrapper .loginbox .login-left {
+    align-items: center;
+    background: #fff !important;
+    border-right: 1px solid #e7e7e7;
+}
+.login-wrapper .loginbox .login-left{
+    padding: 10px;
+}
+.logo-text{ 
+  color: #f5f5f5;
+  font-size:75%;
+}
+ 
+.d-flex{
+  display: flex;
+  align-items: center;
+}
+.sidebar-menu > ul > li > a{
+  color: #a2a3b7 !important;
+}
+.sidebar-menu li.active a{
+ background-color: #000 !important;
+ color: #e4e4e4 !important;
+}
+.sidebar-menu > ul > li.active > a:hover{
+  background-color: #000 !important;
+  color: #a2a3b7 !important;
+}
+.sidebar-menu ul ul a.active{
+  /* text-decoration: none !important;
+  background-color: #1aa597;
+  color: #fff !important; */
+}
+.header .header-left{
+  background-color: #1a1a27 !important;
+}
+.sidebar { 
+    background-color: #1e1e2d !important;
+}
+ 
+.sidebar-menu > ul > li > a:hover {
+  background-color: #000 !important;
+  color: #e4e4e4 !important;
+}
+.sidebar-menu ul ul a { 
+  /* padding: 7px 10px 7px 25px !important; */
+}
+.page-item.active .page-link {
+  background-color: #037d71 !important;
+  border-color: #037d71 !important;
+}
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover{
+  color: #fff !important;
+}
+.check:checked + .checktoggle {
+  background-color: #1aa597 !important;
+}
+.upload-csv {
+  margin: 0 0 10px;
+  width: 150px;
+  border-radius: .25rem;
+  background-color: #037D71 !important; 
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 auto;
+  padding: 10px 15px;
+  position: relative;
+  transition: .3s;
+  text-align: center;
+}
+.upload-csv input.upload {
+  bottom: 0;
+  cursor: pointer;
+  filter: alpha(opacity=0);
+  left: 0;
+  margin: 0;
+  opacity: 0;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 220px;
+}
+.schedule-header {
+  border-bottom: 1px solid #f0f0f0;
+  border-radius: 4px 4px 0 0;
+  padding: 10px 20px;
+}
+.doc-times {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.doc-slot-list {
+  background-color: #12a193 !important;
+  border: 1px solid #12a193 !important;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+  margin: 10px 10px 0 0;
+  padding: 6px 15px;
+}
+.nav-justified .nav-item {
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  text-align: center;
+}
+.schedule-nav .nav-tabs li {
+  margin: 5px 15px 5px 0;
+  display: inline-block;
+}
+.schedule-nav .nav-tabs > li > a {
+  border: 1px solid #dcddea;
+  border-radius: 4px;
+  padding: 6px 15px;
+  text-transform: uppercase;
+}
+.schedule-nav .nav-tabs li {
+  margin: 5px 15px 5px 0;
+  display: inline-block;
+}
+.schedule-nav .nav-tabs li a.active {
+  background: #037d71;
+  border: 1px solid #037d71 !important;
+  color: #fff;
+}
+.schedule-nav .nav-tabs {
+  border: 0 !important;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.schedule-cont {
+  padding: 20px;
+}
+.bg-success-light {
+ 
+  color: #176529 !important;
+}
+.user-menu .dropdown-menu .dropdown-item:hover {
+  color: #fff !important;
+  background: #1e1e2d !important;
+}
+.page-item.active .page-link{
+  background-color: #1983DA !important;
+}
+@media (max-width:768px) {
+  .user-menu.nav > li > a {
+    color: #dadada !important;
+    
+  }
+  .header .header-left .logo{
+    margin-left: 40px;
+    display: inline-block !important;
+}
+  .header-left .logo.logo-small  {
+    display: none !important;
+
+  }
+
+}
+.login-wrapper .loginbox {
+ 
+  max-width: 400px !important;
+}
+@media only screen and (max-width: 991.98px){}
+.login-wrapper .loginbox .login-right {
+    padding: 40px !important; 
+     width: 100% !important; 
+}
+}
