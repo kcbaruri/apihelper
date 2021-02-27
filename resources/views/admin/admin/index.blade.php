@@ -52,7 +52,6 @@
                                                 <tr>
                                                     <th>{{ __('pages.tbl_sl_number_column') }}</th>
                                                     <th>{{ __('pages.tbl_name_column') }}</th>
-                                                    <th>{{ __('sidebar.departments') }}</th>
                                                     <th>{{ __('pages.tbl_email_column') }}</th>
                                                     <th>{{ __('pages.tbl_action_column') }}</th>
                                                 </tr>
@@ -72,11 +71,7 @@
                                                             <a href="#"><?php echo $admin->name;?></a>
                                                         </h2>
                                                     </td> 
-                                                    <td>
-                                                        <h2 class="table-avatar">
-                                                            <a href="#"><?php echo $admin->department->name;?></a>
-                                                        </h2>
-                                                    </td>                                                    
+                                                                                                
                                                     <td><?php echo $admin->email;?></td>                                                    
                                                     <td class="">
                                                         <div class="actions">

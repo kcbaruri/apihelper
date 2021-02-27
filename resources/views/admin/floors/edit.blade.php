@@ -17,10 +17,10 @@
                     <div class="page-header">
                         <div class="row">
                             <div class="col">
-                                <h3 class="page-title">{{ __('sidebar.departments') }}</h3>
+                                <h3 class="page-title">{{ __('sidebar.floors') }}</h3>
                                 <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{url('/admin')}}">{{ __('sidebar.departments') }}</a></li>
-                                    <li class="breadcrumb-item active">{{ __('pages.update_department') }}</li>
+                                    <li class="breadcrumb-item"><a href="{{url('/admin')}}">{{ __('sidebar.floors') }}</a></li>
+                                    <li class="breadcrumb-item active">{{ __('pages.update_floor') }}</li>
                                 </ul>
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">{{ __('pages.update_department') }}</h4>
+                                    <h4 class="card-title">{{ __('pages.update_floor') }}</h4>
                                 </div>
                                 @if ($errors->any())
                                 @foreach ($errors->all() as $error)
@@ -45,13 +45,13 @@
                                 @endif
                                 <div class="card-body">
 
-                                    <form action="{{ route('admin.departments.update', $department->id) }}" method="post">
+                                    <form action="{{ route('admin.floors.update', $floor->id) }}" method="post">
                                        
                                         {{ csrf_field() }}
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.tbl_name_column') }}</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" value="<?php echo $department->name;?>" placeholder="Name" id="name" name="name" required="required">
+                                                <input type="text" class="form-control" value="<?php echo $floor->name;?>" placeholder="Name" id="name" name="name" required="required">
                                             </div>
                                             @error('name')
                                                 <span class="invalid-feedback" role="alert">
@@ -63,7 +63,7 @@
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.tbl_description_column') }}</label>
                                             <div class="col-md-10">
-                                            <textarea class="form-control" rows ="6" placeholder="Description" id="description" name="description"><?php echo $department->description;?></textarea>
+                                            <textarea class="form-control" rows ="6" placeholder="Description" id="description" name="description"><?php echo $floor->description;?></textarea>
                                             </div>
 
                                             @error('description')
@@ -78,12 +78,12 @@
                                             <div class="col-md-10">
                                                 <div class="radio">
                                                     <label>
-                                                        <input type="radio" name="status" class="radio" value="1" @if($department->status == 1 || empty($department->status)) checked @endif> Yes
+                                                        <input type="radio" name="status" class="radio" value="1" @if($floor->status == 1 || empty($floor->status)) checked @endif> Yes
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
-                                                        <input type="radio" name="status" class="radio" value="0" @if($department->status == 0) checked @endif> No
+                                                        <input type="radio" name="status" class="radio" value="0" @if($floor->status == 0) checked @endif> No
                                                     </label>
                                                 </div>                                  
                                         

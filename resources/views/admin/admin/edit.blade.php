@@ -78,18 +78,6 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">{{ __('sidebar.departments') }}</label>
-                                            <div class="col-md-10">
-                                                <select name="department_id" class="form-control" required="required">
-                                                <option value="">Select</option>
-                                                @foreach ($departments as $var)
-                                                <option value="{{ $var->id }}" <?php if($var->id == $admin->department_id) echo "selected=selected"; else echo "";?>>{{ $var->name }}</option>
-                                                @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        
                                         @if($admin->id == auth('admin')->user()->id)
                                         <div class="form-group row">
                                             <label for="password" class="col-form-label col-md-2">{{ __('pages.password') }}</label>

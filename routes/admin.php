@@ -18,26 +18,26 @@ Route::namespace('Admin')->middleware(['auth.admin', 'setlocale'])->group(functi
 
 	Route::resource('/admin', 'AdminController');
 
-	Route::get('/divisions', 'DivisionController@index')->name("divisions");
-	Route::get('/divisions/create', 'DivisionController@create')->name('divisions.create');
-	Route::get('/divisions/edit/{id}', 'DivisionController@edit')->name('divisions.edit');
-	Route::post('/divisions/update/{id}', 'DivisionController@update')->name('divisions.update');
-	Route::post('/divisions/delete/{id}', 'DivisionController@delete')->name('divisions.delete');
-	Route::post('/divisions/store', 'DivisionController@store')->name('divisions.store');
+	Route::get('/billheads', 'BillHeadController@index')->name("billheads");
+	Route::get('/billheads/create', 'BillHeadController@create')->name('billheads.create');
+	Route::get('/billheads/edit/{id}', 'BillHeadController@edit')->name('billheads.edit');
+	Route::post('/billheads/update/{id}', 'BillHeadController@update')->name('billheads.update');
+	Route::post('/billheads/delete/{id}', 'BillHeadController@delete')->name('billheads.delete');
+	Route::post('/billheads/store', 'BillHeadController@store')->name('billheads.store');
 
-	Route::get('/departments', 'DepartmentController@index')->name("departments");
-	Route::get('/departments/create', 'DepartmentController@create')->name('departments.create');
-	Route::get('/departments/edit/{id}', 'DepartmentController@edit')->name('departments.edit');
-	Route::post('/departments/update/{id}', 'DepartmentController@update')->name('departments.update');
-	Route::post('/departments/delete/{id}', 'DepartmentController@delete')->name('departments.delete');
-	Route::post('/departments/store', 'DepartmentController@store')->name('departments.store');
+	Route::get('/floors', 'FloorController@index')->name("floors");
+	Route::get('/floors/create', 'FloorController@create')->name('floors.create');
+	Route::get('/floors/edit/{id}', 'FloorController@edit')->name('floors.edit');
+	Route::post('/floors/update/{id}', 'FloorController@update')->name('floors.update');
+	Route::post('/floors/delete/{id}', 'FloorController@delete')->name('floors.delete');
+	Route::post('/floors/store', 'FloorController@store')->name('floors.store');
 
-	Route::any('/districts', 'DistrictController@index')->name("districts");
-	Route::get('/districts/create', 'DistrictController@create')->name('districts.create');
-	Route::get('/districts/edit/{id}', 'DistrictController@edit')->name('districts.edit');
-	Route::post('/districts/update/{id}', 'DistrictController@update')->name('districts.update');
-	Route::post('/districts/delete/{id}', 'DistrictController@delete')->name('districts.delete');
-	Route::post('/districts/store', 'DistrictController@store')->name('districts.store');
+	Route::any('/flats', 'FlatController@index')->name("flats");
+	Route::get('/flats/create', 'FlatController@create')->name('flats.create');
+	Route::get('/flats/edit/{id}', 'FlatController@edit')->name('flats.edit');
+	Route::post('/flats/update/{id}', 'FlatController@update')->name('flats.update');
+	Route::post('/flats/delete/{id}', 'FlatController@delete')->name('flats.delete');
+	Route::post('/flats/store', 'FlatController@store')->name('flats.store');
 
 	Route::any('/thanas', 'ThanaController@index')->name("thanas");
 	Route::get('/thanas/create', 'ThanaController@create')->name('thanas.create');

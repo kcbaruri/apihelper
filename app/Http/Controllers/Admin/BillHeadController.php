@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Department;
+use App\Models\BillHead;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
-class DepartmentController extends Controller
+class BillHeadController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +17,10 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments =  Department::all();
-        return view('admin.departments.index', compact('departments'));
+        $query = BillHead::orderBy('name', 'asc');
+
+        $billheads =  $query->get();
+        return view('admin.billheads.index', compact('billheads'));
     }
 
     /**
@@ -27,7 +30,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        return view('admin.departments.create');
+        return view('admin.billheads.create');
     }
 
     /**
@@ -43,87 +46,82 @@ class DepartmentController extends Controller
         ])->validate();
         
         try {
-            $division = Department::create([
+            $division = BillHead::create([
                 'name' => $request->input('name'),
                 'description' => $request->input('description'),
                 'status' => $request->input('status')
             ]);
 
         } catch (\Exception $e) {
-           // dd($e);
+            //dd($e);
             return redirect()->back()->withErrors("Something went wrong");
         }
 
-        return redirect()->route('admin.departments')->with('success', "Department has been created suuccessfully.");
+        return redirect()->route('admin.billheads')->with('success', "Bill head has been saved successfully.");
     }
 
     /**
+
+
      * Display the specified resource.
      *
-     * @param  \App\Ward  $ward
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Ward $ward)
+    public function show($id)
     {
-        //
+        $billhead = BillHead::find($id);
+        return view('admin.billheads.show')->with(compact( 'billhead'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Ward  $ward
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, $id)
     {
-        $department = Department::find($id);
-        return view('admin.departments.edit')->with(compact( 'department'));
+        $billhead = BillHead::find($id);
+        return view('admin.billheads.edit')->with(compact( 'billhead'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Ward  $ward
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    { 
         try {
-            $department = Department::find($id);
+            $billhead = BillHead::find($id);
 
-            if($department == null)
-                return redirect()->back()->withErrors("Department Was Not Found");
+            if($billhead == null)
+                return redirect()->back()->withErrors("Bill Head Not Found");
 
-            $department->name = $request->input('name');
-            $department->description = $request->input('description');
-            $department->id = $id;
-            $department->status = $request->input('status');
-            $department->save();
+            $billhead->name = $request->input('name');
+            $billhead->description = $request->input('description');
+            $billhead->status = $request->input('status');
+            $billhead->save();
 
      
         } catch (\Exception $e) {
-              dd($e);
             return redirect()->back()->withErrors("Something went wrong");
         }
 
-        return redirect()->route('admin.departments')
-                         ->with('success', "Successfully updated division");
+        return redirect()->route('admin.billheads')
+                         ->with('success', "Bill head has been modified successfully.");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Ward  $ward
-     * @return \Illuminate\Http\Response
-     */
     public function delete($id)
     {
         try {
             
-            $department = Department::find($id);
-            $department->delete();
-            return redirect()->back()->with('success', 'Successfully deleted department.');
+            $billhead = BillHead::find($id);
+            $billhead->delete();
+            return redirect()->back()->with('success', 'Bill head has been removed successfully.');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors('Something went wrong!');
         }

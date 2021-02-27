@@ -55,14 +55,14 @@ return[
 	'cpassword'=>'নিশ্চিত গুপ্তমন্ত্র',
 	'usertype'=>'ব্যাবহারকারির প্রকার',
 	'updateutype'=>'হালনাগাদ',
-	'add_division'=>'বিভাগ যোগ করুন',
-	'new_division'=>'নতুন বিভাগ',
+	'add_billhead'=>'বিল হেড যোগ করুন',
+	'new_billhead'=>'নতুন বিল হেড',
 
 	'add_citizen'=>'গ্রাহক যোগ করুন',
 	'new_citizen'=>'নতুন গ্রাহক',
 
-	'add_district'=>'জেলা যোগ করুন',
-	'new_district'=>'নতুন জেলা',
+	'add_flat'=>'ফ্ল্যাট যোগ করুন',
+	'new_flat'=>'নতুন ফ্ল্যাট',
 
 	'add_upazila'=>'উপজেলা বা থানা যোগ করুন ',
 	'new_upazila'=>'নতুন উপজেলা বা থানা',
@@ -76,8 +76,8 @@ return[
 	'add_vata'=>'ভাতার প্রকার  যোগ করুন',
 	'new_vata'=>'নতুন ভাতার প্রকার ',
 
-	'add_department'=>'অধিদপ্তর যোগ করুন',
-	'new_department'=>'নতুন অধিদপ্তর',
+	'add_floor'=>'তলা যোগ করুন',
+	'new_floor'=>'নতুন তলা',
 
 	//Data manipulation
 	'add_new'=> "নতুন যুক্ত করুন",
@@ -85,17 +85,17 @@ return[
 	'update_button'=>'হালনাগাদ করুন',
 	'show_in_list'=>'তালিকাতে দেখাবেন?',
 	'update_citizen'=>'গ্রাহক হালনাগাদ',
-	'update_division'=>'বিভাগ হালনাগাদ',
-	'update_department'=>'অধিদপ্তর হালনাগাদ',
-	'update_district'=>'জেলা হালনাগাদ',
+	'update_billhead'=>'বিল হেড হালনাগাদ',
+	'update_floor'=>'তলা হালনাগাদ',
+	'update_flat'=>'ফ্ল্যাট হালনাগাদ',
 	'update_upazila'=>'উপজেলা হালনাগাদ',
 	'update_union'=>'ইউনিয়ন বা পঞ্চায়েত হালনাগাদ',
 	'update_village'=>'গ্রাম হালনাগাদ',
 	'update_vata'=>'ভাতার প্রকার  হালনাগাদ',
 
 	// Selection area
-	'select_division'=>'বিভাগ নির্বাচন করুন',
-	'select_district'=>'জেলা নির্বাচন করুন',
+	'select_billhead'=>'বিল হেড  নির্বাচন করুন',
+	'select_flat'=>'ফ্ল্যাট নির্বাচন করুন',
 	'select_upazila'=>'উপজেলা বা থানা নির্বাচন করুন',
 	'select_union'=>'ইউনিয়ন বা পঞ্চায়েত নির্বাচন করুন',
 	'select_village'=>'গ্রাম নির্বাচন করুন',

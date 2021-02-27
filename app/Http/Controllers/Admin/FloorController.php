@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Division;
+use App\Models\Floor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
-class DivisionController extends Controller
+class FloorController extends Controller
 {
-    
     /**
      * Display a listing of the resource.
      *
@@ -17,10 +16,8 @@ class DivisionController extends Controller
      */
     public function index()
     {
-        $query = Division::orderBy('name', 'asc');
-
-        $divisions =  $query->get();
-        return view('admin.divisions.index', compact('divisions'));
+        $floors =  Floor::all();
+        return view('admin.floors.index', compact('floors'));
     }
 
     /**
@@ -30,7 +27,7 @@ class DivisionController extends Controller
      */
     public function create()
     {
-        return view('admin.divisions.create');
+        return view('admin.floors.create');
     }
 
     /**
@@ -46,82 +43,87 @@ class DivisionController extends Controller
         ])->validate();
         
         try {
-            $division = Division::create([
+            $division = Floor::create([
                 'name' => $request->input('name'),
                 'description' => $request->input('description'),
                 'status' => $request->input('status')
             ]);
 
         } catch (\Exception $e) {
-            //dd($e);
+           // dd($e);
             return redirect()->back()->withErrors("Something went wrong");
         }
 
-        return redirect()->route('admin.divisions')->with('success', "Successfully created Division");
+        return redirect()->route('admin.floors')->with('success', "Floor has been created suuccessfully.");
     }
 
     /**
-
-
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Ward  $ward
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Ward $ward)
     {
-        $division = Division::find($id);
-        return view('admin.divisions.show')->with(compact( 'division'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Ward  $ward
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, $id)
     {
-        $division = Division::find($id);
-        return view('admin.divisions.edit')->with(compact( 'division'));
+        $floor = Floor::find($id);
+        return view('admin.floors.edit')->with(compact( 'floor'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Ward  $ward
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    { 
+    {
         try {
-            $division = Division::find($id);
+            $floor = Floor::find($id);
 
-            if($division == null)
-                return redirect()->back()->withErrors("Division Not Found");
+            if($floor == null)
+                return redirect()->back()->withErrors("Floor Was Not Found");
 
-            $division->name = $request->input('name');
-            $division->description = $request->input('description');
-            $division->status = $request->input('status');
-            $division->save();
+            $floor->name = $request->input('name');
+            $floor->description = $request->input('description');
+            $floor->id = $id;
+            $floor->status = $request->input('status');
+            $floor->save();
 
      
         } catch (\Exception $e) {
+              dd($e);
             return redirect()->back()->withErrors("Something went wrong");
         }
 
-        return redirect()->route('admin.divisions')
-                         ->with('success', "Successfully updated division");
+        return redirect()->route('admin.floors')
+                         ->with('success', "The floor has been modified successfully");
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Ward  $ward
+     * @return \Illuminate\Http\Response
+     */
     public function delete($id)
     {
         try {
             
-            $division = Division::find($id);
-            $division->delete();
-            return redirect()->back()->with('success', 'Successfully deleted Division.');
+            $floor = Floor::find($id);
+            $floor->delete();
+            return redirect()->back()->with('success', 'The floor has been removed successfully.');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors('Something went wrong!');
         }

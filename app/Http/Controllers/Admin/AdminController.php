@@ -42,8 +42,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        $departments = Department::where('status','=',1)->orderBy('name', 'asc')->get();
-        return view('admin.admin.create', compact('departments'));
+        return view('admin.admin.create');
     }
 
     /**
@@ -56,7 +55,6 @@ class AdminController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
-            'department_id' => 'required|numeric|gt:0',
             'email' => ['required', 'string', 'email', 'max:255', 'unique:admins'],
             'password' => ['required', 'string', 'min:6', 'confirmed']
         ])->validate();
@@ -67,7 +65,6 @@ class AdminController extends Controller
             $user = Admin::create([
                 'name' => $request->input('name'),
                 'email' => $request->input('email'),
-                'department_id' => $request->input('department_id'),
                 'password' => Hash::make($request->input('password')),
                 'user_type' => $request->input('user_type'),
                 'mobile' => $request->input('mobile'),
@@ -105,8 +102,7 @@ class AdminController extends Controller
     public function edit(Request $request, $id)
     {
         $admin = Admin::find($id);
-        $departments = Department::where('status','=',1)->orderBy('name', 'asc')->get();
-        return view('admin.admin.edit')->with(compact( 'admin', 'departments'));
+        return view('admin.admin.edit')->with(compact( 'admin'));
     }
 
     /**
@@ -127,7 +123,6 @@ class AdminController extends Controller
 
             $user->name = $request->input('name');
             $user->email = $request->input('email');
-            $user->department_id = $request->input('department_id');
             $user->password = $request->has('password') ? Hash::make($request->input('password')) : $user->password;
             $user->user_type = $request->input('user_type');
             $user->mobile = $request->input('mobile');

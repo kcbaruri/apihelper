@@ -21,7 +21,7 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'mobile', 'user_type', 'password', 'department_id',
+        'name', 'email', 'mobile', 'user_type', 'password'
     ];
 
     /**
@@ -46,9 +46,4 @@ class Admin extends Authenticatable
     {
         $this->notify(new AdminPasswordResetNotification($token));
     }
-
-    public function department()
-	{
-	return $this->belongsTo('App\Models\Department', 'department_id', 'id');
-	}
 }

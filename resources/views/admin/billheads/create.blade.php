@@ -17,10 +17,10 @@
                     <div class="page-header">
                         <div class="row">
                             <div class="col">
-                                <h3 class="page-title">{{ __('sidebar.divisions') }}</h3>
+                                <h3 class="page-title">{{ __('sidebar.billheads') }}</h3>
                                 <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{url('/admin')}}">{{ __('sidebar.divisions') }}</a></li>
-                                    <li class="breadcrumb-item active">{{ __('pages.add_division') }}</li>
+                                    <li class="breadcrumb-item"><a href="{{url('/admin')}}">{{ __('sidebar.billheads') }}</a></li>
+                                    <li class="breadcrumb-item active">{{ __('pages.add_billhead') }}</li>
                                 </ul>
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">{{ __('pages.new_division') }}</h4>
+                                    <h4 class="card-title">{{ __('pages.new_billhead') }}</h4>
                                 </div>
                                 @if ($errors->any())
                                 @foreach ($errors->all() as $error)
@@ -44,7 +44,7 @@
                                 @endforeach
                                 @endif
                                 <div class="card-body">
-                                    <form enctype="multipart/form-data" action="{{ url()->route('admin.divisions.store') }}" method="post">
+                                    <form enctype="multipart/form-data" action="{{ url()->route('admin.billheads.store') }}" method="post">
                                         {{ csrf_field() }}
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.tbl_name_column') }}</label>

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Division;
-use App\Models\District;
+use App\Models\Floor;
+use App\Models\Flat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use PDF;
 
-class DistrictController extends Controller
+class FlatController extends Controller
 {
     
     /**
@@ -19,20 +19,20 @@ class DistrictController extends Controller
      */
     public function index(Request $request)
     {
-        $query = District::with('division')->where('status','!=','-1');
-        if($request->division_id > 0){
-            $query->where('division_id', '=', $request->input('division_id'));
+        $query = Flat::with('floor')->where('status','!=','-1');
+        if($request->floor_id > 0){
+            $query->where('floor_id', '=', $request->input('floor_id'));
         }
 
-        $districts =  $query->orderBy('name', 'ASC')->get();
+        $flats =  $query->orderBy('name', 'ASC')->get();
 
-        $divisions = Division::where('status','=', 1)->get();
+        $floors = Floor::where('status','=', 1)->get();
         if($request->search == "download") {
 
-        $pdf = PDF::loadView('admin.districts.district_report', compact('districts'));
-        return $pdf->download('district.pdf')->header('Content-Type','application/pdf');
+        $pdf = PDF::loadView('admin.flats.district_report', compact('flats'));
+        return $pdf->download('flat.pdf')->header('Content-Type','application/pdf');
         } else {
-        return view('admin.districts.index', compact('districts','divisions'));
+        return view('admin.flats.index', compact('flats','floors'));
         }
     }
 
@@ -43,8 +43,8 @@ class DistrictController extends Controller
      */
     public function create()
     {
-        $divisions = Division::where('status','=',1)->orderBy('name', 'asc')->get();
-        return view('admin.districts.create', compact('divisions'));
+        $floors = Floor::where('status','=',1)->orderBy('name', 'asc')->get();
+        return view('admin.flats.create', compact('floors'));
     }
 
     /**
@@ -57,14 +57,14 @@ class DistrictController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
-            'division_id' => ['required', 'integer']
+            'floor_id' => ['required', 'integer']
         ])->validate();
         
         try {
-            $district = District::create([
+            $flat = Flat::create([
                 'name' => $request->input('name'),
                 'description' => $request->input('description'),
-                'division_id' => $request->input('division_id'),
+                'floor_id' => $request->input('floor_id'),
                 'status' => $request->input('status')
             ]);
 
@@ -72,7 +72,7 @@ class DistrictController extends Controller
             return redirect()->back()->withErrors("Something went wrong");
         }
 
-        return redirect()->route('admin.districts')->with('success', "Successfully created Division");
+        return redirect()->route('admin.flats')->with('success', "Flat has been saved successfully.");
     }
 
     /**
@@ -85,8 +85,8 @@ class DistrictController extends Controller
      */
     public function show($id)
     {
-        $division = Division::find($id);
-        return view('admin.divisions.show')->with(compact( 'division'));
+        $division = Floor::find($id);
+        return view('admin.flats.show')->with(compact( 'floor'));
     }
 
     /**
@@ -97,9 +97,9 @@ class DistrictController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        $district = District::find($id);
-        $divisions = Division::where('status','=',1)->orderBy('name', 'asc')->get();
-        return view('admin.districts.edit')->with(compact( 'district','divisions'));
+        $flat = Flat::find($id);
+        $floors = Floor::where('status','=',1)->orderBy('name', 'asc')->get();
+        return view('admin.flats.edit')->with(compact( 'flat','floors'));
     }
 
     /**
@@ -113,36 +113,36 @@ class DistrictController extends Controller
     { 
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
-            'division_id' => ['required', 'integer']
+            'floor_id' => ['required', 'integer']
         ])->validate();
 
         try {
-            $district = District::find($id);
+            $flat = Flat::find($id);
 
-            if($district == null)
-                return redirect()->back()->withErrors("District Not Found");
+            if($flat == null)
+                return redirect()->back()->withErrors("Flat Not Found");
 
-            $district->name = $request->input('name');
-            $district->description = $request->input('description');
-            $district->division_id = $request->input('division_id');
-            $district->status = $request->input('status');
-            $district->save();
+            $flat->name = $request->input('name');
+            $flat->description = $request->input('description');
+            $flat->floor_id = $request->input('floor_id');
+            $flat->status = $request->input('status');
+            $flat->save();
      
         } catch (\Exception $e) {
             return redirect()->back()->withErrors("Something went wrong");
         }
 
-        return redirect()->route('admin.districts')
-                         ->with('success', "Successfully updated district");
+        return redirect()->route('admin.flats')
+                         ->with('success', "The flat has been modified successfully.");
     }
 
     public function delete($id)
     {
         try {
             
-            $district = District::find($id);
-            $district->delete();
-            return redirect()->back()->with('success', 'Successfully deleted District.');
+            $flat = Flat::find($id);
+            $flat->delete();
+            return redirect()->back()->with('success', 'Flat has been removed successfully.');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors('Something went wrong!');
         }

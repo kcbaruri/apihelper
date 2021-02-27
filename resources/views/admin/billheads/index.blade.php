@@ -15,10 +15,10 @@
                     <div class="page-header">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h3 class="page-title">{{ __('sidebar.departments') }}</h3>
+                                <h3 class="page-title">{{ __('sidebar.billheads') }}</h3>
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('/admin')}}">{{ __('sidebar.dashboard') }}</a></li>
-                                    <li class="breadcrumb-item"><a href="javascript:(0);">{{ __('sidebar.departments') }}</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript:(0);">{{ __('sidebar.billheads') }}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                                     </div>
                                     @endif
                                     <div class="col-md-12 text-right p-0">
-                                        <a class="btn btn-primary" data-toggle="" href="{{ route('admin.departments.create') }}">
+                                        <a class="btn btn-primary" data-toggle="" href="{{ route('admin.billheads.create') }}">
                                             <i class="fa fa-plus"> </i> <span>{{ __('pages.add_new') }} </span>
                                         </a>
                                     </div>
@@ -50,9 +50,9 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php if(count($departments) > 0) {
+                                                <?php if(count($billheads) > 0) {
                                                     $counter = 0;
-                                                    foreach($departments as $department) { $counter++; ?>
+                                                    foreach($billheads as $billhead) { $counter++; ?>
                                                 <tr>
                                                     <td>
                                                         <h2 class="table-avatar">
@@ -61,16 +61,16 @@
                                                     </td> 
                                                     <td>
                                                         <h2 class="table-avatar">
-                                                            <a href="#"><?php echo $department->name;?></a>
+                                                            <a href="#"><?php echo $billhead->name;?></a>
                                                         </h2>
                                                     </td>                                                    
-                                                    <td style="max-width:220px; white-space: normal;"> <span><?php echo $department->description; ?></span></td>                                                    
+                                                    <td style="max-width:220px; white-space: normal;"> <span><?php echo $billhead->description; ?></span></td>                                                    
                                                     <td class="">
                                                         <div class="actions">
-                                                            <a class="btn btn-sm bg-success-light" href="{{ route('admin.departments.edit', $department->id) }}">
+                                                            <a class="btn btn-sm bg-success-light" href="{{ route('admin.billheads.edit', $billhead->id) }}">
                                                                 <i class="fe fe-pencil"></i> {{ __('pages.edit') }}
                                                             </a>
-                                                            <form action="{{ route('admin.departments.delete', $department->id) }}" method="post" class="btn-group">
+                                                            <form action="{{ route('admin.billheads.delete', $billhead->id) }}" method="post" class="btn-group">
                                                             {{ csrf_field() }}
                                                             <button title="Delete" type="submit" class="btn btn-sm bg-danger-light" onclick="return confirm('Are you sure you want to delete?')"><i class="fe fe-trash"></i> {{ __('pages.delete') }}&nbsp;</button>
                                                             </form>
@@ -79,7 +79,7 @@
                                                 </tr>
                                             <?php } }
                                                 else 
-                                                echo "<tr><td colspan=5 style ='text-align: center;'>No Data Found</td></tr>"; ?>
+                                                echo "<tr><td colspan=5>No Data Found</td></tr>";?>
                                                
                                             </tbody>
                                         </table>

@@ -15,10 +15,10 @@
                     <div class="page-header">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h3 class="page-title">{{ __('sidebar.districts') }}</h3>
+                                <h3 class="page-title">{{ __('sidebar.floors') }}</h3>
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('/admin')}}">{{ __('sidebar.dashboard') }}</a></li>
-                                    <li class="breadcrumb-item"><a href="javascript:(0);">{{ __('sidebar.districts') }}</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript:(0);">{{ __('sidebar.floors') }}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -35,43 +35,9 @@
                                     </div>
                                     @endif
                                     <div class="col-md-12 text-right p-0">
-                                        <a class="btn btn-primary" data-toggle="" href="{{ route('admin.districts.create') }}">
+                                        <a class="btn btn-primary" data-toggle="" href="{{ route('admin.floors.create') }}">
                                             <i class="fa fa-plus"> </i> <span>{{ __('pages.add_new') }} </span>
                                         </a>
-                                    </div>
-                                    <div class="search-area">
-                                        <h2>{{ __('pages.search') }}</h2>
-                                        <form action="{{ route('admin.districts') }}" method="get">
-                                                                                       
-                                            <div class="row">
-                                                <div class="col-md-4 p-0">
-                                                    <div class="form-group">
-                                                        <div class="col-md-12">
-                                                            <select id="division_id" name="division_id" class="form-control">
-                                                            <option value="">Select Division</option>
-                                                            @foreach ($divisions as $var)
-                                                            <option value="{{ $var->id }}" <?php if($var->id == Request::get('division_id')) echo "selected=selected"; else echo "";?>>{{ $var->name }}</option>
-                                                            @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 p-0">
-                                                    <div class="form-group">
-                                                        <div class="col-md-12">
-                                                            <button class="btn btn-primary" type="submit">{{ __('pages.search') }}</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 p-0 float-left">
-                                                    <div class="form-group">
-                                                        <div class="col-md-12">
-                                                            <button class="btn btn-primary" type="submit" name="search" value="download">{{ __('pages.download') }}</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
                                     </div>
                                     <div class="table-responsive">
                                         <table class="datatable table table-hover table-center mb-0">
@@ -79,34 +45,32 @@
                                                 <tr>
                                                     <th>{{ __('pages.tbl_sl_number_column') }}</th>
                                                     <th>{{ __('pages.tbl_name_column') }}</th>
-                                                    <th>{{ __('sidebar.divisions') }}</th>
                                                     <th>{{ __('pages.tbl_description_column') }}</th>
                                                     <th>{{ __('pages.tbl_action_column') }}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php if(count($districts) > 0) {
+                                                <?php if(count($floors) > 0) {
                                                     $counter = 0;
-                                                    foreach($districts as $district) { $counter++; ?>
+                                                    foreach($floors as $floor) { $counter++; ?>
                                                 <tr>
                                                     <td>
                                                         <h2 class="table-avatar">
                                                             <a href="#"><?php echo $counter;?></a>
                                                         </h2>
-                                                    </td>
+                                                    </td> 
                                                     <td>
                                                         <h2 class="table-avatar">
-                                                            <a href="#"><?php echo $district->name;?></a>
+                                                            <a href="#"><?php echo $floor->name;?></a>
                                                         </h2>
-                                                    </td>
-                                                    <td><?php echo $district->division->name;?></td>
-                                                    <td style="max-width:220px; white-space: normal;"><?php  echo $district->description; ?></td>                                                    
+                                                    </td>                                                    
+                                                    <td style="max-width:220px; white-space: normal;"> <span><?php echo $floor->description; ?></span></td>                                                    
                                                     <td class="">
                                                         <div class="actions">
-                                                            <a class="btn btn-sm bg-success-light" href="{{ route('admin.districts.edit', $district->id) }}">
+                                                            <a class="btn btn-sm bg-success-light" href="{{ route('admin.floors.edit', $floor->id) }}">
                                                                 <i class="fe fe-pencil"></i> {{ __('pages.edit') }}
                                                             </a>
-                                                            <form action="{{ route('admin.districts.delete', $district->id) }}" method="post" class="btn-group">
+                                                            <form action="{{ route('admin.floors.delete', $floor->id) }}" method="post" class="btn-group">
                                                             {{ csrf_field() }}
                                                             <button title="Delete" type="submit" class="btn btn-sm bg-danger-light" onclick="return confirm('Are you sure you want to delete?')"><i class="fe fe-trash"></i> {{ __('pages.delete') }}&nbsp;</button>
                                                             </form>
@@ -115,7 +79,7 @@
                                                 </tr>
                                             <?php } }
                                                 else 
-                                                echo "<tr><td colspan=5>No Data Found</td></tr>";?>
+                                                echo "<tr><td colspan=5 style ='text-align: center;'>No Data Found</td></tr>"; ?>
                                                
                                             </tbody>
                                         </table>

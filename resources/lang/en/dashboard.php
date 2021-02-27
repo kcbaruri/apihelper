@@ -1,7 +1,8 @@
 <?php
 return[
 	'title'=> "Welcome to Nazmohal",
-	'handover_summary'=>'Handover Summary'
+	'collection_summary'=>'Rent Collection Summary',
+	'total'=>'Total'
 ]
 
 ?>

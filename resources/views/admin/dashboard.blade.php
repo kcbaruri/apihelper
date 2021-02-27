@@ -65,7 +65,7 @@
                                     </div>
                                     <div class="dash-widget-info">
                                         
-                                        <h6 class="text-muted"><span>{{ __('sidebar.citizens') }}</span></h6>
+                                        <h6 class="text-muted"><span>{{ __('sidebar.floors') }}</span></h6>
                                         <div class="progress progress-sm">
                                             <div class="progress-bar bg-success w-50"></div>
                                         </div>
@@ -111,7 +111,7 @@
                                     </div>
                                     <div class="dash-widget-info">
                                         
-                                        <h6 class="text-muted"><span>{{ __('sidebar.vatahandovers') }}</span</h6>
+                                        <h6 class="text-muted"><span>{{ __('sidebar.flats') }}</span</h6>
                                         <div class="progress progress-sm">
                                             <div class="progress-bar bg-warning w-50"></div>
                                         </div>
@@ -135,7 +135,7 @@
                                     </div>
                                     <div class="dash-widget-info">
                                         
-                                        <h6 class="text-muted"><span>{{ __('sidebar.unions') }}</span</h6>
+                                        <h6 class="text-muted"><span>{{ __('sidebar.tenants') }}</span</h6>
                                         <div class="progress progress-sm">
                                             <div class="progress-bar bg-warning w-50"></div>
                                         </div>
@@ -157,13 +157,13 @@
                                             <i class="fe fe-money"></i>
                                         </span>
                                         <div class="dash-count">
-                                            <h3>{{ __('sidebar.vatatypes') }}</h3>
+                                            <h3>{{ __('sidebar.billheads') }}</h3>
                                         </div>
                                     </div>
 
                         </div>
                         <div class="text-right">
-                            <h4 class="card-title">Total</h4>
+                            <h4 class="card-title">{{ __('dashboard.total') }}</h4>
                             <div class="dash-count">
                                             <h3>{{ (empty($vatatypes) == false) ? $vatatypes->count() : '' }}</h3>
                             </div>
@@ -198,7 +198,7 @@
 
                         <div class="float-left">
                             <a>
-                               <h4>{{ __('dashboard.handover_summary') }}</h4></a>
+                               <h4>{{ __('dashboard.collection_summary') }}</h4></a>
                         </div>
                     </div>
                     <div class="card-body">

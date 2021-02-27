@@ -62,8 +62,8 @@ return[
 	'add_division'=>'Add Division',
 	'new_division'=>'New Division',
 
-	'add_district'=>'Add District',
-	'new_district'=>'New District',
+	'add_flat'=>'Add Flat',
+	'new_flat'=>'New Flat',
 
 	'add_upazila'=>'Add District or Thana',
 	'new_upazila'=>'New Upazila or Thana',
@@ -77,8 +77,8 @@ return[
 	'add_vata'=>'Add Vata Type',
 	'new_vata'=>'New Vata Type',
 
-	'add_department'=>'Add Department',
-	'new_department'=>'New Department',
+	'add_floor'=>'Add Floor',
+	'new_floor'=>'New Floor',
 
 	//Data manipulation
 	
@@ -88,8 +88,8 @@ return[
 	'show_in_list'=>'Do you want to show in list?',
 	'update_citizen'=>'Update Citizen',
 	'update_division'=>'Update Division',
-	'update_department'=>'Update Department',
-	'update_district'=>'Update District',
+	'update_floor'=>'Update Floor',
+	'update_flat'=>'Update Flat',
 	'update_upazila'=>'Update Upazila or Thana',
 	'update_union'=>'Update Union',
 	'update_village'=>'Update Village',

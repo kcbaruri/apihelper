@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-     <title>Samajik Nirapotta - Dashboard System</title>
+     <title>Nazmohal - Dashboard System</title>
         
         <!-- Favicon -->
         <!-- <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png"> -->
