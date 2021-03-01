@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Citizen extends Model {
+class Tenant extends Model {
 
-	protected $table = 'citizens';
+	protected $table = 'tenants';
     protected $guarded = ['id', 'created_at', 'updated_at'];
-
+/*
     public function vatatype()
 	{
 	return $this->belongsTo('App\Models\Vatatype', 'vata_type_id', 'id');
@@ -42,5 +42,5 @@ class Citizen extends Model {
 	public function vatahandover()
 	{
 	return $this->hasMany('App\Models\Vatahandover', 'citizen_id', 'id');
-	}
+	} */
 }

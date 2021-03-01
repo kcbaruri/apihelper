@@ -17,10 +17,10 @@
                     <div class="page-header">
                         <div class="row">
                             <div class="col">
-                                <h3 class="page-title">{{ __('sidebar.citizens') }}</h3>
+                                <h3 class="page-title">{{ __('sidebar.tenants') }}</h3>
                                 <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{url('/admin')}}">{{ __('sidebar.citizens') }}</a></li>
-                                    <li class="breadcrumb-item active">{{ __('pages.add_citizen') }}</li>
+                                    <li class="breadcrumb-item"><a href="{{url('/admin')}}">{{ __('sidebar.tenants') }}</a></li>
+                                    <li class="breadcrumb-item active">{{ __('pages.add_tenant') }}</li>
                                 </ul>
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">{{ __('pages.new_citizen') }}</h4>
+                                    <h4 class="card-title">{{ __('pages.new_tenant') }}</h4>
                                 </div>
                                 @if ($errors->any())
                                 @foreach ($errors->all() as $error)
@@ -44,7 +44,7 @@
                                 @endforeach
                                 @endif
                                 <div class="card-body">
-                                    <form action="{{ url()->route('admin.citizens.store') }}" method="post" enctype="multipart/form-data">
+                                    <form action="{{ url()->route('admin.tenants.store') }}" method="post" enctype="multipart/form-data">
                                         {{ csrf_field() }}
                                        
                                         <div class="form-group row">

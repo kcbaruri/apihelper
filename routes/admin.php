@@ -67,15 +67,15 @@ Route::namespace('Admin')->middleware(['auth.admin', 'setlocale'])->group(functi
 	Route::post('/vatatypes/delete/{id}', 'VatatypeController@delete')->name('vatatypes.delete');
 	Route::post('/vatatypes/store', 'VatatypeController@store')->name('vatatypes.store');
 
-	Route::any('/citizens', 'CitizenController@index')->name("citizens");
-	Route::get('/citizens/create', 'CitizenController@create')->name('citizens.create');
-	Route::get('/citizens/view/{id}', 'CitizenController@show')->name('citizens.view');
-	Route::get('/citizens/edit/{id}', 'CitizenController@edit')->name('citizens.edit');
-	Route::post('/citizens/update/{id}', 'CitizenController@update')->name('citizens.update');
-	Route::post('/citizens/delete/{id}', 'CitizenController@delete')->name('citizens.delete');
-	Route::post('/citizens/store', 'CitizenController@store')->name('citizens.store');
-	Route::get('/citizens/vata-handover/{id}', 'CitizenController@vataHandover')->name('citizens.vata-handover');
-	Route::post('/citizens/store-handover', 'CitizenController@storeHandover')->name('citizens.store-handover');
+	Route::any('/tenants', 'TenantController@index')->name("tenants");
+	Route::get('/tenants/create', 'TenantController@create')->name('tenants.create');
+	Route::get('/tenants/view/{id}', 'TenantController@show')->name('tenants.view');
+	Route::get('/tenants/edit/{id}', 'TenantController@edit')->name('tenants.edit');
+	Route::post('/tenants/update/{id}', 'TenantController@update')->name('tenants.update');
+	Route::post('/tenants/delete/{id}', 'TenantController@delete')->name('tenants.delete');
+	Route::post('/tenants/store', 'TenantController@store')->name('tenants.store');
+	Route::get('/tenants/vata-handover/{id}', 'TenantController@vataHandover')->name('tenants.vata-handover');
+	Route::post('/tenants/store-handover', 'TenantController@storeHandover')->name('tenants.store-handover');
 
 	Route::get('/vata-handovers', 'VatahandoverController@index')->name("vata-handovers");
 	

@@ -9,13 +9,13 @@ use App\Models\Union;
 use App\Models\Village;
 use App\Models\Vatatype;
 use App\Models\Vatahandover;
-use App\Models\Citizen;
+use App\Models\Tenant;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
-class CitizenController extends Controller
+class TenantController extends Controller
 {
     use ImageUploadTrait;
     /**
@@ -25,34 +25,9 @@ class CitizenController extends Controller
      */
     public function index(Request $request)
     {
-        /*$query = Citizen::orderBy('name', 'asc');
-
-        $citizens =  $query->get();*/
-
-        $query = Citizen::with('vatatype')->where('status','!=','-1');
-        if($request->nid != null){             
-            $query->where('nid', 'like', '%'.$request->nid);
-        }
-        if($request->division_id > 0){
-            $query->where('division_id', '=', $request->input('division_id'));
-        }
-        if($request->district_id > 0){
-            $query->where('district_id', '=', $request->input('district_id'));
-        }
-        if($request->thana_id > 0){
-            $query->where('thana_id', '=', $request->input('thana_id'));
-        }
-        if($request->union_id > 0){
-            $query->where('union_id', '=', $request->input('union_id'));
-        }
-
-        $citizens = $query->orderBy('name', 'ASC')->get();
-        $divisions = Division::where('status','=', 1)->get();
-        $districts = District::where('status','=', 1)->get();
-        $thanas = Thana::where('status','=', 1)->get();
-        $unions = Union::where('status','=', 1)->get();
-        $villages = Village::where('status','=', 1)->get();
-        return view('admin.citizens.index', compact('citizens','divisions','districts','thanas','unions'));
+        $query = new Tenant();
+        $tenants = $query->orderBy('name', 'ASC')->get();
+        return view('admin.tenants.index', compact('tenants'));
     }
 
     /**

@@ -52,7 +52,7 @@
                         </div>
                         <?php }?>
                         <div class="col-xl-3 col-sm-6 col-12">
-                        <a class="nav-link" href="{{url('admin/citizens')}}">
+                        <a class="nav-link" href="{{url('admin/floors')}}">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="dash-widget-header">
@@ -60,7 +60,7 @@
                                             <i class="fe fe-credit-card"></i>
                                         </span>
                                         <div class="dash-count">
-                                            <h3>{{ (empty($citizens) == false) ? $citizens->count() : '' }}</h3>
+                                            <h3>{{ (empty($floors) == false) ? $floors->count() : '' }}</h3>
                                         </div>
                                     </div>
                                     <div class="dash-widget-info">
@@ -98,7 +98,7 @@
                             </a>
                         </div> -->
                         <div class="col-xl-3 col-sm-6 col-12">
-                        <a class="nav-link" href="{{url('admin/vata-handovers')}}">
+                        <a class="nav-link" href="{{url('admin/flats')}}">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="dash-widget-header">
@@ -106,7 +106,7 @@
                                             <i class="fe fe-folder"></i>
                                         </span>
                                         <div class="dash-count">
-                                            <h3>{{ (empty($vatahandovers) == false) ? $vatahandovers->count() : '' }}</h3>
+                                            <h3>{{ (empty($flats) == false) ? $flats->count() : '' }}</h3>
                                         </div>
                                     </div>
                                     <div class="dash-widget-info">
@@ -122,7 +122,7 @@
                         </div>
 
                         <div class="col-xl-3 col-sm-6 col-12">
-                        <a class="nav-link" href="{{url('admin/unions')}}">
+                        <a class="nav-link" href="{{url('admin/tenants')}}">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="dash-widget-header">
@@ -130,7 +130,7 @@
                                             <i class="fe fe-union"></i>
                                         </span>
                                         <div class="dash-count">
-                                            <h3>{{ (empty($unions) == false) ? $unions->count() : '' }}</h3>
+                                            <h3>{{ (empty($tenants) == false) ? $tenants->count() : '0' }}</h3>
                                         </div>
                                     </div>
                                     <div class="dash-widget-info">
@@ -165,7 +165,7 @@
                         <div class="text-right">
                             <h4 class="card-title">{{ __('dashboard.total') }}</h4>
                             <div class="dash-count">
-                                            <h3>{{ (empty($vatatypes) == false) ? $vatatypes->count() : '' }}</h3>
+                                            <h3>{{ (empty($billheads) == false) ? $billheads->count() : '' }}</h3>
                             </div>
                         </div>
                     </div>
@@ -176,14 +176,14 @@
                             <th>Name</th>
                             </thead>
                             <tbody>
-                            @forelse($vatatypes as $key=>$vatatype)
+                            @forelse($billheads as $key=>$billhead)
                             <tr>
                                 <td>{{$key+1}}</td>
-                                <td>{{$vatatype->name}}</td>
+                                <td>{{$billhead->name}}</td>
                             </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4" class="text-center">No vata type exists</td>
+                                    <td colspan="4" class="text-center">No bill head exists</td>
                                 </tr>
                             @endforelse
 

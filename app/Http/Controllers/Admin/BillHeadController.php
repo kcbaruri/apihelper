@@ -6,6 +6,7 @@ use App\Models\BillHead;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use DB;
 
 class BillHeadController extends Controller
 {
@@ -51,6 +52,11 @@ class BillHeadController extends Controller
                 'description' => $request->input('description'),
                 'status' => $request->input('status')
             ]);
+
+            $maxId = BillHead::max('id');
+            $newColumnName = 'col_'.$maxId;
+
+            DB::select(DB::raw('ALTER TABLE monthly_bills ADD '.$newColumnName.'  double(8,2) NOT NULL DEFAULT 0.00;'));
 
         } catch (\Exception $e) {
             //dd($e);

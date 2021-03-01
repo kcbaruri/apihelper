@@ -15,10 +15,10 @@
                     <div class="page-header">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h3 class="page-title">{{ __('sidebar.citizens') }}</h3>
+                                <h3 class="page-title">{{ __('sidebar.tenants') }}</h3>
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('/admin')}}">{{ __('sidebar.dashboard') }}</a></li>
-                                    <li class="breadcrumb-item"><a href="javascript:(0);">{{ __('sidebar.citizens') }}</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript:(0);">{{ __('sidebar.tenants') }}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -35,13 +35,13 @@
                                     </div>
                                     @endif
                                     <div class="col-md-12 text-right p-0">
-                                        <a class="btn btn-primary" data-toggle="" href="{{ route('admin.citizens.create') }}">
+                                        <a class="btn btn-primary" data-toggle="" href="{{ route('admin.tenants.create') }}">
                                             <i class="fa fa-plus"> </i> <span>{{ __('pages.add_new') }} </span>
                                         </a>
                                     </div>
                                     <div class="search-area">
                                         <h2>{{ __('pages.search') }}</h2>
-                                        <form action="{{ route('admin.citizens') }}" method="get">
+                                        <form action="{{ route('admin.tenants') }}" method="get">
                                                                                        
                                             <div class="row">
                                                 <div class="col-md-2 p-0">
@@ -52,55 +52,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-2 p-0">
-                                                    <div class="form-group">
-                                                        <div class="col-md-12">
-                                                            <select id="division_id" name="division_id" class="form-control" onchange="getDistrict(this.value,'district_id','')">
-                                                            <option value="">Select Division</option>
-                                                            @foreach ($divisions as $var)
-                                                            <option value="{{ $var->id }}" <?php if($var->id == Request::get('division_id')) echo "selected=selected"; else echo "";?>>{{ $var->name }}</option>
-                                                            @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2 p-0">
-                                                    <div class="form-group">
-                                                        <div class="col-md-12">
-                                                            <select id="district_id" name="district_id" class="form-control" onchange="getThana(this.value,'thana_id','')">
-                                                            <option value="">Select District</option>
-                                                            @foreach ($districts as $var)
-                                                            <option value="{{ $var->id }}" <?php if($var->id == Request::get('district_id')) echo "selected=selected"; else echo "";?>>{{ $var->name }}</option>
-                                                            @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-2 p-0">
-                                                    <div class="form-group">
-                                                        <div class="col-md-12">
-                                                            <select id="thana_id" name="thana_id" class="form-control" onchange="getUnion(this.value,'union_id','')">
-                                                            <option value="">Select Upazila</option>
-                                                            @foreach ($thanas as $var)
-                                                            <option value="{{ $var->id }}" <?php if($var->id == Request::get('thana_id')) echo "selected=selected"; else echo "";?>>{{ $var->name }}</option>
-                                                            @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2 p-0">
-                                                    <div class="form-group">
-                                                        <div class="col-md-12">
-                                                            <select id="union_id" name="union_id" class="form-control">
-                                                            <option value="">Select Union</option>
-                                                            @foreach ($unions as $var)
-                                                            <option value="{{ $var->id }}" <?php if($var->id == Request::get('union_id')) echo "selected=selected"; else echo "";?>>{{ $var->name }}</option>
-                                                            @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                              
                                               
                                                 <div class="col-md-4 p-0">
                                                     <div class="form-group">
@@ -125,34 +77,34 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php if(count($citizens) > 0) {
+                                                <?php if(count($tenants) > 0) {
                                                     $conuter  = 0;
-                                                    foreach($citizens as $citizen) {  $conuter++;?>
+                                                    foreach($tenants as $tenant) {  $conuter++;?>
                                                 <tr>
                                                      <td>
                                                         <?php echo $conuter;?>
                                                     </td>
                                                     <td>
-                                                         <img style="border-radius: 50%;" src="<?php echo asset($citizen->image);?>" width="100px" height="100px">
+                                                         <img style="border-radius: 50%;" src="<?php echo asset($tenant->image);?>" width="100px" height="100px">
                                                     </td>    
                                                     <td>
                                                         <h2 class="table-avatar">
-                                                            <a href="#"><?php echo $citizen->name;?></a>
+                                                            <a href="#"><?php echo $tenant->name;?></a>
                                                         </h2>
-                                                    </td>                                      <td><?php echo $citizen->vatatype->name;?></td>              
-                                                    <td><?php echo $citizen->nid;?></td>
+                                                    </td>                                      <td><?php echo $tenant->vatatype->name;?></td>              
+                                                    <td><?php echo $tenant->nid;?></td>
                                                     <td class="">
                                                         <div class="actions">
-                                                            <a class="btn btn-sm btn-info" href="{{ route('admin.citizens.view', $citizen->id) }}">
+                                                            <a class="btn btn-sm btn-info" href="{{ route('admin.tenants.view', $citizen->id) }}">
                                                                 <i class="fe fe-eye"></i> {{ __('pages.view') }}
                                                             </a>
-                                                            <a class="btn btn-sm btn-secondary" href="{{ route('admin.citizens.vata-handover', $citizen->id) }}">
+                                                            <a class="btn btn-sm btn-secondary" href="{{ route('admin.tenants.vata-handover', $citizen->id) }}">
                                                                 <i class="fe fe-pencil"></i> {{ __('pages.vata_handover') }}
                                                             </a>
-                                                            <a class="btn btn-sm bg-success-light" href="{{ route('admin.citizens.edit', $citizen->id) }}">
+                                                            <a class="btn btn-sm bg-success-light" href="{{ route('admin.tenants.edit', $citizen->id) }}">
                                                                 <i class="fe fe-pencil"></i> {{ __('pages.edit') }}
                                                             </a>
-                                                            <form action="{{ route('admin.citizens.delete', $citizen->id) }}" method="post" class="btn-group">
+                                                            <form action="{{ route('admin.tenants.delete', $tenant->id) }}" method="post" class="btn-group">
                                                             {{ csrf_field() }}
                                                             <button title="Delete" type="submit" class="btn btn-sm bg-danger-light" onclick="return confirm('Are you sure you want to delete?')"><i class="fe fe-trash"></i> {{ __('pages.delete') }}&nbsp;</button>
                                                             </form>

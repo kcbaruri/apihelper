@@ -1,6 +1,6 @@
 <?php
 return[
-    'district_rpt_header'=> "জেলার তালিকা",
+    'flat_rpt_header'=> "ফ্ল্যাটের তালিকা",
     'upazila_rpt_header'=> "উপজেলার তালিকা",
     'union_rpt_header'=> "ইউনিয়ন বা পঞ্চায়েতের তালিকা ",
     'village_rpt_header'=> "গ্রামের তালিকা",

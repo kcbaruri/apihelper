@@ -2,7 +2,7 @@
 <html>
 
    <head>
-      <title>Districts Report</title>
+      <title>Flat Report</title>
 
       <style>
          table td,
@@ -20,23 +20,23 @@
          <span class="logo-text">নাজমহল ভবন</span><br/>
          <span>উত্তরা, ঢাকা।</span><br/>
          <hr/>
-         <h2 style="color:#6f6f6f;margin:0"><span>{{ __('reports.district_rpt_header') }}</span></h2>
+         <h2 style="color:#6f6f6f;margin:0"><span>{{ __('reports.flat_rpt_header') }}</span></h2>
       </div>
 
         <table width="100%" cellpadding="5px" cellspacing="0" style="background-color: #fff;padding: 20px;border-radius: 5px;box-shadow: 0px 0px 5px 0px #8c8989;">
         <tr style="background-color:#C0C0C0;">
         <th width="15%" style ="text-align: center;">{{ __('pages.tbl_sl_number_column') }}</th>
         <th width="65%">{{ __('pages.tbl_name_column') }}</th>  
-        <th width="20%">{{ __('sidebar.divisions') }}</th> 
+        <th width="20%">{{ __('sidebar.floors') }}</th> 
         </tr>
         <?php 
         $i = 1;
-        foreach($districts as $var){
+        foreach($flats as $var){
             ?>
             <tr>
             <td width="15%" style ="text-align: center;"><?php echo $i;?></td>
             <td width="65%"><?php echo $var->name;?></td>
-            <td width="20%"><?php echo $var->division->name;?></td>
+            <td width="20%"><?php echo $var->floor->name;?></td>
             </tr>
             <?php
             $i++;
