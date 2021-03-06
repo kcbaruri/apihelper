@@ -68,6 +68,17 @@
                                                     
                                             </div>
                                         </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-md-2">Is flat owner</label>
+                                            <div class="col-md-10">
+                                                <select name="blood_group" id="blood_group" class="form-control">
+                                                    <option value="yes">Yes</option>
+                                                    <option value="no">No</option>
+                                                </select>
+                                                    
+                                            </div>
+                                        </div>
                                        
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.tbl_name_column') }}</label>

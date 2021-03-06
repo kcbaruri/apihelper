@@ -17,7 +17,7 @@
                     <div class="page-header">
                         <div class="row">
                             <div class="col">
-                                <h3 class="page-title">{{ __('sidebar.$billheads') }}</h3>
+                                <h3 class="page-title">{{ __('sidebar.billheads') }}</h3>
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('/admin')}}">{{ __('sidebar.billheads') }}</a></li>
                                     <li class="breadcrumb-item active">{{ __('pages.update_billhead') }}</li>

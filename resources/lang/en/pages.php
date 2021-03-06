@@ -56,6 +56,9 @@ return[
 	'usertype'=>'User Type',
 	'updateutype'=>'Update Admin User',
 
+	'add_billhead'=>'Add Bill Head',
+	'new_billhead'=>'New Bill Head',
+
 	'add_tenant'=>'Add Tenant',
 	'new_tenant'=>'New Tenant',
 
@@ -87,6 +90,7 @@ return[
 	'update_button'=>'Update',
 	'show_in_list'=>'Do you want to show in list?',
 	'update_citizen'=>'Update Citizen',
+	'update_billhead'=>'Update Bill Head',
 	'update_division'=>'Update Division',
 	'update_floor'=>'Update Floor',
 	'update_flat'=>'Update Flat',
