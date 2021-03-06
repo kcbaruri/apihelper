@@ -14,6 +14,8 @@
         
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{{ asset('samajikadmin/css/bootstrap.min.css') }}">
+
+        <link rel="stylesheet" href="{{ asset('samajikadmin/css/slidercss.css') }}">
         
         <!-- Fontawesome CSS -->
         <link rel="stylesheet" href="{{ asset('samajikadmin/css/font-awesome.min.css') }}">

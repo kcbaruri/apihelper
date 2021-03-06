@@ -50,40 +50,66 @@
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.tbl_name_column') }}</label>
                                             <div class="col-md-10">
-                                            <input type="checkbox"
-                                                       value="1"
-                                                       onchange="isMasterOfTheApartment()"
-                                                       name="is_master"
-                                                       id="is_master">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">Is flat owner</label>
-                                            <div class="col-md-10">
-                                                <select name="blood_group" id="blood_group" class="form-control">
-                                                    <option value="yes">Yes</option>
-                                                    <option value="no">No</option>
-                                                </select>
-                                                    
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">Is flat owner</label>
-                                            <div class="col-md-10">
-                                                <select name="blood_group" id="blood_group" class="form-control">
-                                                    <option value="yes">Yes</option>
-                                                    <option value="no">No</option>
-                                                </select>
-                                                    
-                                            </div>
-                                        </div>
-                                       
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">{{ __('pages.tbl_name_column') }}</label>
-                                            <div class="col-md-10">
                                                 <input type="text" class="form-control" placeholder="Name" id="name" name="name" required="required" value="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-md-2">{{ __('pages.is_master') }}</label>
+                                            <div class="col-md-10">
+                                                <label class="switch">
+                                                <input type="checkbox" name="is_master" id="is_master" onchange="isMaster()">
+                                                <span class="slider round"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row hiden_class show_parent_dropdown">
+                                            <label class="col-form-label col-md-2">{{ __('pages.family_head') }}</label>
+                                            <div class="col-md-10">
+                                            <select name="family_head_id" id="family_head_id" class="form-control btn btn-secondary dropdown-toggle">
+                                            <option value="" selected>Select family head</option>
+                                            @foreach($familyHeads as $id=>$familyHead)
+                                                <option value="{{$id}}">{{$familyHead}}</option>
+                                            @endforeach
+                                            </select>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row hiden_class" style ="display: none;">
+                                            <label class="col-form-label col-md-2">{{ __('pages.is_flat_owner') }}</label>
+                                            <div class="col-md-10">
+                                                <select name="is_flat_owner" id="is_flat_owner" class="form-control">
+                                                    <option value="1">Yes</option>
+                                                    <option value="0">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row hiden_class" style ="display: none;">
+                                            <label class="col-form-label col-md-2">{{ __('pages.floor') }}</label>
+                                            <div class="col-md-10">
+                                            <select name="floor_id" id="floor_id" class="form-control btn btn-secondary dropdown-toggle">
+                                            <option value="" selected>Select floor</option>
+                                            @foreach($floors as $id=>$floor)
+                                                <option value="{{$id}}">{{$floor}}</option>
+                                            @endforeach
+                                            </select>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row hiden_class" style ="display: none;">
+                                            <label class="col-form-label col-md-2">{{ __('pages.flat') }}</label>
+                                            <div class="col-md-10">
+                                            <select name="flat_id" id="flat_id" class="form-control btn btn-secondary dropdown-toggle">
+                                            <option value="" selected>Select flat</option>
+                                            @foreach($flats as $id=>$flat)
+                                                <option value="{{$flat->id}}">{{$flat->name}}</option>
+                                            @endforeach
+                                            </select>
+
                                             </div>
                                         </div>
 
@@ -92,17 +118,17 @@
                                             <div class="col-md-10">
                                                 <div class="radio">
                                                     <label>
-                                                        <input type="radio" name="sex" class="radio" value="Male" checked="checked"> Male
+                                                        <input type="radio" name="gender" class="radio" value="Male" checked="checked"> Male
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
-                                                        <input type="radio" name="sex" class="radio" value="Female"> Female
+                                                        <input type="radio" name="gender" class="radio" value="Female"> Female
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
-                                                        <input type="radio" name="sex" class="radio" value="Other"> Other
+                                                        <input type="radio" name="gender" class="radio" value="Other"> Other
                                                     </label>
                                                 </div>                          
                                             </div>
@@ -111,14 +137,14 @@
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.nid') }}</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="NID" id="nid" name="nid" required="required" value="">
+                                                <input type="text" class="form-control" placeholder="National id number" id="nid" name="nid" required="required" value="">
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.dob') }}</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="Date of Birth" id="dob" name="dob" required="required" value="">
+                                                <input type="text" class="form-control" placeholder="Date of birth" id="dob" name="dob" required="required" value="">
                                             </div>
                                         </div>
 
@@ -139,7 +165,7 @@
                                             </div>
                                         </div>
                                         
-                                        <div class="form-group row">
+                                        <div class="form-group row hiden_class" style ="display: none;">
                                             <label class="col-form-label col-md-2">{{ __('pages.religion') }}</label>
                                             <div class="col-md-10">
                                                 <input type="text" class="form-control" placeholder="Religion" maxlength="11" id="religion" name="religion" required="required" value="">
@@ -147,36 +173,13 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-form-label col-md-2">{{ __('pages.spouse_name') }}</label>
-                                            <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="Spouse Name" id="spouse_name" name="spouse_name" required="required" value="">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">{{ __('pages.is_alive') }}</label>
-                                            <div class="col-md-10">
-                                                <div class="radio">
-                                                    <label>
-                                                        <input type="radio" name="is_spouse_alive" class="radio" value="1" checked="checked"> Yes
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label>
-                                                        <input type="radio" name="is_spouse_alive" class="radio" value="0"> No
-                                                    </label>
-                                                </div>                                  
-                                        
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.photo') }}</label>
                                             <div class="col-md-10">
-                                                <input type="file" class="form-control" placeholder="Name" id="image" name="image">
+                                                <input type="file" class="form-control" placeholder="Name" id="photo" name="photo">
                                             </div>
                                         </div>
 
-                                        <div class="form-group row">
+                                        <div class="form-group row hiden_class" style ="display: none;">
                                             <label class="col-form-label col-md-2">{{ __('pages.profession') }}</label>
                                             <div class="col-md-10">
                                             <fieldset>
@@ -281,81 +284,69 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">{{ __('pages.monthly_income') }}</label>
-                                            <div class="col-md-10">
-                                                <input type="number" class="form-control" placeholder="Monthly Income" id="monthly_income" name="monthly_income" required="required" value="">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">{{ __('pages.annual_income') }}</label>
-                                            <div class="col-md-10">
-                                                <input type="number" class="form-control" placeholder="Annual Income" id="annual_income" name="annual_income" required="required" value="">
-                                            </div>
-                                        </div>
-
-                                      
-
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">{{ __('pages.allocated_amount') }}</label>
-                                            <div class="col-md-10">
-                                                <input type="number" class="form-control" placeholder="Allocated Amount" id="receive_amount" name="receive_amount" required="required" value="">
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">{{ __('pages.book_number') }}</label>
-                                            <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="Vata Book Number" id="vata_book_number" name="vata_book_number" required="required" value="">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">{{ __('pages.bank_account_number') }}</label>
-                                            <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="Bank A/C Number" id="bank_account_number" name="bank_account_number" required="required" value="">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">{{ __('pages.bank_name') }}</label>
-                                            <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="Bank" id="bank" name="bank" required="required" value="">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">{{ __('pages.branch_name') }}</label>
-                                            <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="Bank Branch" id="bank_branch" name="bank_branch" required="required" value="">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">{{ __('pages.last_receiving_date') }}</label>
-                                            <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="Last VATA receiving Date" id="last_vata_receive_date" name="last_vata_receive_date" required="required" value="">
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">{{ __('pages.father_name') }}</label>
-                                            <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="Father Name" id="father_name" name="father_name" required="required" value="">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">{{ __('pages.mother_name') }}</label>
-                                            <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="Mother Name" id="mother_name" name="mother_name" required="required" value="">
-                                            </div>
-                                        </div>
-                                        
                                        
-                                      
-
-                                      
+                                        <div class="form-group row hiden_class" style ="display: none;">
+                                            <label class="col-form-label col-md-2">{{ __('pages.notice_period_in_month') }}</label>
+                                            <div class="col-md-10">
+                                                <input type="text" class="form-control" placeholder="Notice period" id="notice_period_in_month" name="notice_period_in_month" required="required" value="">
+                                            </div>
+                                        </div>
                                         
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-md-2">{{ __('pages.mobile_no') }}</label>
+                                            <div class="col-md-10">
+                                                <input type="text" class="form-control" placeholder="Mobile number" id="mobile_number" name="mobile_number" required="required" value="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-md-2">{{ __('pages.email') }}</label>
+                                            <div class="col-md-10">
+                                                <input type="text" class="form-control" placeholder="Email" id="email" name="email" required="required" value="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row hiden_class" style ="display: none;">
+                                            <label class="col-form-label col-md-2">{{ __('pages.permanent_address') }}</label>
+                                            <div class="col-md-10">
+                                                <input type="text" class="form-control" placeholder="Permanent Address" id="permanent_address" name="permanent_address" required="required" value="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row hiden_class" style ="display: none;">
+                                            <label class="col-form-label col-md-2">{{ __('pages.advance_amount') }}</label>
+                                            <div class="col-md-10">
+                                                <input type="text" class="form-control" placeholder="Advance amount" id="advance_amount" name="advance_amount" required="required" value="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row hiden_class" style ="display: none;">
+                                            <label class="col-form-label col-md-2">{{ __('pages.payment_due_date') }}</label>
+                                            <div class="col-md-10">
+                                                <input type="text" class="form-control" placeholder="Payment due date" id="payment_due_date" name="payment_due_date" required="required" value="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row hiden_class" style ="display: none;">
+                                            <label class="col-form-label col-md-2">{{ __('pages.in_date') }}</label>
+                                            <div class="col-md-10">
+                                                <input type="text" class="form-control" placeholder="In Date" id="in_date" name="in_date" required="required" value="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row hiden_class" style ="display: none;">
+                                            <label class="col-form-label col-md-2">{{ __('pages.out_date') }}</label>
+                                            <div class="col-md-10">
+                                                <input type="text" class="form-control" placeholder="Out Date" id="out_date" name="out_date" required="required" value="">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row hiden_class" style ="display: none;">
+                                            <label class="col-form-label col-md-2">{{ __('pages.number_of_family_members') }}</label>
+                                            <div class="col-md-10">
+                                                <input type="text" class="form-control" placeholder="Number of family member(s)" id="number_of_family_member" name="number_of_family_member" required="required" value="">
+                                            </div>
+                                        </div>
+                                         
                                         <div class="form-group mb-0">
                                         <button class="btn btn-primary" type="submit">{{ __('pages.save_button') }}</button>
                                         </div>
@@ -384,6 +375,17 @@ $( "#last_vata_receive_date" ).datepicker({ dateFormat: 'yy-mm-dd' });
 </script>
 
 <script type="text/javascript">
+
+function isMaster() {
+        if ($('#is_master').is(':checked')) {
+            $('.hiden_class').show();
+            $('.show_parent_dropdown').hide();
+        } else {
+            $('.hiden_class').hide();
+            $('.show_parent_dropdown').show();
+        }
+}
+
 function getDistrict(division_id, id, selected = '') {
     var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
     $.ajax({

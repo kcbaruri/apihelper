@@ -25,6 +25,7 @@ return[
 	'religion'=>'Religion',
 	'spouse_name'=>'Spouse Name',
 	'is_alive'=>'Is Spouse Alive?',
+	'is_master'=>'Is Family Head?',
 	'photo'=>'Photo',
 	'profession'=>'Profession',
 	'monthly_income'=>'Monthly Income',
@@ -41,6 +42,21 @@ return[
 	'vata_receiver_details'=>'Vata Receiver\'s Details',
 	'vata_receiver_info'=>'Receiver\'s Information',
 	'vata_handover'=>'Vata Handover',
+
+	//Tenant
+	'family_head'=>"Family Head",
+	'notice_period_in_month'=>'Notice Period',
+	'is_flat_owner'=>'Is flat owner?',
+	'floor'=>'Floor',
+	'flat'=>'Flat',
+	'permanent_address'=>'Permanent Address',
+	'advance_amount'=>'Advance Amount',
+	'payment_due_date'=>'Payment Due Date',
+	'in_date'=>'In Date',
+	'out_date'=>'Out Date',
+	'number_of_family_members'=>'Number of Family Member(s)',
+
+
 
 	'delete'=>'Delete',
 	'search'=>'Search',

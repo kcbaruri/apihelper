@@ -25,6 +25,7 @@ return[
 	'religion'=>'ধর্ম',
 	'spouse_name'=>'স্বামী বা স্ত্রী নাম',
 	'is_alive'=>'স্বামী বা স্ত্রী কি বেঁচে আছেন?',
+	'is_master'=>'পরিবারের প্রধান?',
 	'photo'=>'ছবি',
 	'profession'=>'পেশা',
 	'monthly_income'=>'মাসিক আয়',
@@ -40,7 +41,19 @@ return[
 	'vata_receiver_details'=>'ভাতার গ্রাহকের বিস্তারিত',
 	'vata_receiver_info'=>'গ্রাহকের তথ্য',
 	'vata_handover'=>'ভাতা হস্তান্তর',
-	
+
+	//Tenant
+	'family_head'=>"পরিবারের প্রধান",
+	'notice_period_in_month'=>'নোটিশ পিরিয়ড ',
+	'is_flat_owner'=>'নিজের ফ্লাট?',
+	'floor'=>'তলা',
+	'flat'=>'ফ্লাট',
+	'permanent_address'=>'স্থায়ী ঠিকানা',
+	'advance_amount'=>'অগ্রিম জমার পরিমান',
+	'payment_due_date'=>'ভাড়ার শেষ দিন',
+	'in_date'=>'প্রবেশের তারিখ',
+	'out_date'=>'  ত্যাগের তারিখ',
+	'number_of_family_members'=>'পরিবারের সদস্য সংখ্যা',
 
 	'delete'=>'মুছে ফেলুন',
 	'search'=>'অনুসন্ধান করুন',
