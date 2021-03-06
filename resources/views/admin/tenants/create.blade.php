@@ -46,6 +46,28 @@
                                 <div class="card-body">
                                     <form action="{{ url()->route('admin.tenants.store') }}" method="post" enctype="multipart/form-data">
                                         {{ csrf_field() }}
+
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-md-2">{{ __('pages.tbl_name_column') }}</label>
+                                            <div class="col-md-10">
+                                            <input type="checkbox"
+                                                       value="1"
+                                                       onchange="isMasterOfTheApartment()"
+                                                       name="is_master"
+                                                       id="is_master">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-form-label col-md-2">Is flat owner</label>
+                                            <div class="col-md-10">
+                                                <select name="blood_group" id="blood_group" class="form-control">
+                                                    <option value="yes">Yes</option>
+                                                    <option value="no">No</option>
+                                                </select>
+                                                    
+                                            </div>
+                                        </div>
                                        
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.tbl_name_column') }}</label>
@@ -262,19 +284,7 @@
                                             </div>
                                         </div>
 
-                                        @if(count($vata_types) > 0)
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">{{ __('sidebar.vatatypes') }}</label>
-                                            <div class="col-md-10">
-                                                <select id="vata_type_id" name="vata_type_id" class="form-control" required="required">
-                                                <option value="">-- Select One --</option>
-                                                @foreach ($vata_types as $var)
-                                                <option value="{{ $var->id }}">{{ $var->name }}</option>
-                                                @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        @endif
+                                      
 
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.allocated_amount') }}</label>
@@ -330,85 +340,10 @@
                                             </div>
                                         </div>
                                         
-                                        @if(count($divisions) > 0)
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">{{ __('sidebar.divisions') }}</label>
-                                            <div class="col-md-10">
-                                                <select id="division_id" name="division_id" class="form-control" required="required" onchange="getDistrict(this.value,'district_id','')">
-                                                <option value="">-- Select One --</option>
-                                                @foreach ($divisions as $var)
-                                                <option value="{{ $var->id }}">{{ $var->name }}</option>
-                                                @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        @endif
+                                       
+                                      
 
-                                        @if(count($districts) > 0)
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">{{ __('sidebar.districts') }}</label>
-                                            <div class="col-md-10">
-                                                <select id="district_id" name="district_id" class="form-control" required="required" onchange="getThana(this.value,'thana_id','')">
-                                                <option value="">-- Select One --</option>
-                                                @foreach ($districts as $var)
-                                                <option value="{{ $var->id }}">{{ $var->name }}</option>
-                                                @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        @endif
-
-                                        @if(count($thanas) > 0)
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">{{ __('sidebar.upazilas') }}</label>
-                                            <div class="col-md-10">
-                                                <select id="thana_id" name="thana_id" class="form-control" required="required" onchange="getUnion(this.value,'union_id','')">
-                                                <option value="">-- Select One --</option>
-                                                @foreach ($thanas as $var)
-                                                <option value="{{ $var->id }}">{{ $var->name }}</option>
-                                                @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        @endif
-                                        @if(count($unions) > 0)
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">{{ __('sidebar.unions') }}</label>
-                                            <div class="col-md-10">
-                                                <select id="union_id" name="union_id" class="form-control" required="required" onchange="getVillage(this.value,'village_id','')">
-                                                <option value="">-- Select One --</option>
-                                                @foreach ($unions as $var)
-                                                <option value="{{ $var->id }}">{{ $var->name }}</option>
-                                                @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        @endif
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">{{ __('sidebar.wards') }}</label>
-                                            <div class="col-md-10">
-                                                <select name="ward" id="ward" class="form-control">
-                                                <option value="">-- Select One --</option>
-                                                @for($i=1; $i<31; $i++)
-                                                <option value="{{ $i }}">Ward - {{ $i }}</option>
-                                                @endfor
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        @if(count($villages) > 0)
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">{{ __('sidebar.villages') }}</label>
-                                            <div class="col-md-10">
-                                                <select name="village_id" id="village_id" class="form-control" required="required">
-                                                <option value="">-- Select One --</option>
-                                                @foreach ($villages as $var)
-                                                <option value="{{ $var->id }}">{{ $var->name }}</option>
-                                                @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        @endif
+                                      
                                         
                                         <div class="form-group mb-0">
                                         <button class="btn btn-primary" type="submit">{{ __('pages.save_button') }}</button>

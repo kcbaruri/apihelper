@@ -56,8 +56,8 @@ return[
 	'usertype'=>'User Type',
 	'updateutype'=>'Update Admin User',
 
-	'add_citizen'=>'Add Citizen',
-	'new_citizen'=>'New Citizen',
+	'add_tenant'=>'Add Tenant',
+	'new_tenant'=>'New Tenant',
 
 	'add_division'=>'Add Division',
 	'new_division'=>'New Division',

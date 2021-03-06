@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Division;
-use App\Models\District;
+use App\Models\Floor;
+/*use App\Models\District;
 use App\Models\Thana;
 use App\Models\Union;
 use App\Models\Village;
-use App\Models\Vatatype;
-use App\Models\Vatahandover;
+use App\Models\Vatatype;*/
+use App\Models\Flat;
 use App\Models\Tenant;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Http\Request;
@@ -37,13 +37,10 @@ class TenantController extends Controller
      */
     public function create()
     {
-        $divisions = Division::where('status','=', 1)->get();
-        $districts = District::where('status','=', 1)->get();
-        $thanas = Thana::where('status','=', 1)->get();
-        $unions = Union::where('status','=', 1)->get();
-        $villages = Village::where('status','=', 1)->get();
-        $vata_types = Vatatype::where('status','=', 1)->get();
-        return view('admin.citizens.create', compact('divisions','districts','thanas','unions','villages','vata_types'));
+        $floors = Floor::pluck('name', 'id');
+        $familyHeads = Tenant::where('is_master', true)->pluck('name', 'id');
+        $flats = Flat::get();
+        return view('admin.tenants.create', compact('floors', 'flats', 'familyHeads'));
     }
 
     /**

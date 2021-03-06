@@ -58,8 +58,8 @@ return[
 	'add_billhead'=>'বিল হেড যোগ করুন',
 	'new_billhead'=>'নতুন বিল হেড',
 
-	'add_citizen'=>'গ্রাহক যোগ করুন',
-	'new_citizen'=>'নতুন গ্রাহক',
+	'add_tenant'=>'ভাড়াটিয়া যোগ করুন',
+	'new_tenant'=>'নতুন ভাড়াটিয়া',
 
 	'add_flat'=>'ফ্ল্যাট যোগ করুন',
 	'new_flat'=>'নতুন ফ্ল্যাট',
