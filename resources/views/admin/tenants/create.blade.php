@@ -68,7 +68,7 @@
                                             <label class="col-form-label col-md-2">{{ __('pages.family_head') }}</label>
                                             <div class="col-md-10">
                                             <select name="family_head_id" id="family_head_id" class="form-control btn btn-secondary dropdown-toggle">
-                                            <option value="" selected>Select family head</option>
+                                            <option value="" selected>-- Select One --</option>
                                             @foreach($familyHeads as $id=>$familyHead)
                                                 <option value="{{$id}}">{{$familyHead}}</option>
                                             @endforeach
@@ -91,7 +91,7 @@
                                             <label class="col-form-label col-md-2">{{ __('pages.floor') }}</label>
                                             <div class="col-md-10">
                                             <select name="floor_id" id="floor_id" class="form-control btn btn-secondary dropdown-toggle">
-                                            <option value="" selected>Select floor</option>
+                                            <option value="" selected>-- Select One --</option>
                                             @foreach($floors as $id=>$floor)
                                                 <option value="{{$id}}">{{$floor}}</option>
                                             @endforeach
@@ -104,7 +104,7 @@
                                             <label class="col-form-label col-md-2">{{ __('pages.flat') }}</label>
                                             <div class="col-md-10">
                                             <select name="flat_id" id="flat_id" class="form-control btn btn-secondary dropdown-toggle">
-                                            <option value="" selected>Select flat</option>
+                                            <option value="" selected>-- Select One --</option>
                                             @foreach($flats as $id=>$flat)
                                                 <option value="{{$flat->id}}">{{$flat->name}}</option>
                                             @endforeach
@@ -137,7 +137,7 @@
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.nid') }}</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="National id number" id="nid" name="nid" required="required" value="">
+                                                <input type="text" class="form-control" placeholder="National id number" id="nid" name="nid" value="">
                                             </div>
                                         </div>
 
@@ -152,6 +152,7 @@
                                             <label class="col-form-label col-md-2">{{ __('pages.blood_group') }}</label>
                                             <div class="col-md-10">
                                                 <select name="blood_group" id="blood_group" class="form-control">
+                                                    <option value="0">-- Select One --</option>
                                                     <option value="A+">A+</option>
                                                     <option value="A-">A-</option>
                                                     <option value="B+">B+</option>
@@ -168,7 +169,14 @@
                                         <div class="form-group row hiden_class" style ="display: none;">
                                             <label class="col-form-label col-md-2">{{ __('pages.religion') }}</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="Religion" maxlength="11" id="religion" name="religion" required="required" value="">
+                                                <select name="religion" id="religion" class="form-control">
+                                                    <option value="0">-- Select One --</option>
+                                                    <option value="1">Buddism</option>
+                                                    <option value="2">Hinduism</option>
+                                                    <option value="3">Christanity</option>
+                                                    <option value="4">Islam</option>
+                                                </select>
+                                                    
                                             </div>
                                         </div>
 
@@ -288,62 +296,68 @@
                                         <div class="form-group row hiden_class" style ="display: none;">
                                             <label class="col-form-label col-md-2">{{ __('pages.notice_period_in_month') }}</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="Notice period" id="notice_period_in_month" name="notice_period_in_month" required="required" value="">
+                                                <select name="notice_period_in_month" id="notice_period_in_month" class="form-control">
+                                                    <option value="0">-- Select One --</option>
+                                                    <option value="1">One Month</option>
+                                                    <option value="2">Two Month</option>
+                                                    <option value="3">Three Month</option>
+                                                    <option value="4">Four Month</option>
+                                                </select>
                                             </div>
                                         </div>
                                         
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.mobile_no') }}</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="Mobile number" id="mobile_number" name="mobile_number" required="required" value="">
+                                                <input type="text" class="form-control" placeholder="Mobile number" id="mobile_number" name="mobile_number" value="">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.email') }}</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="Email" id="email" name="email" required="required" value="">
+                                                <input type="text" class="form-control" placeholder="Email" id="email" name="email" value="">
                                             </div>
                                         </div>
 
                                         <div class="form-group row hiden_class" style ="display: none;">
                                             <label class="col-form-label col-md-2">{{ __('pages.permanent_address') }}</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="Permanent Address" id="permanent_address" name="permanent_address" required="required" value="">
+                                                <input type="text" class="form-control" placeholder="Permanent Address" id="permanent_address" name="permanent_address" value="">
                                             </div>
                                         </div>
 
                                         <div class="form-group row hiden_class" style ="display: none;">
                                             <label class="col-form-label col-md-2">{{ __('pages.advance_amount') }}</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="Advance amount" id="advance_amount" name="advance_amount" required="required" value="">
+                                                <input type="text" class="form-control" placeholder="Advance amount" id="advance_amount" name="advance_amount"  value="">
                                             </div>
                                         </div>
 
                                         <div class="form-group row hiden_class" style ="display: none;">
                                             <label class="col-form-label col-md-2">{{ __('pages.payment_due_date') }}</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="Payment due date" id="payment_due_date" name="payment_due_date" required="required" value="">
+                                                <input type="text" class="form-control" placeholder="Payment due date" id="payment_due_date" name="payment_due_date" value="">
                                             </div>
                                         </div>
 
                                         <div class="form-group row hiden_class" style ="display: none;">
                                             <label class="col-form-label col-md-2">{{ __('pages.in_date') }}</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="In Date" id="in_date" name="in_date" required="required" value="">
+                                                <input type="text" class="form-control" placeholder="In Date" id="in_date" name="in_date" value="">
                                             </div>
                                         </div>
 
                                         <div class="form-group row hiden_class" style ="display: none;">
                                             <label class="col-form-label col-md-2">{{ __('pages.out_date') }}</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="Out Date" id="out_date" name="out_date" required="required" value="">
+                                                <input type="text" class="form-control" placeholder="Out Date" id="out_date" name="out_date" value="">
                                             </div>
                                         </div>
 
                                         <div class="form-group row hiden_class" style ="display: none;">
                                             <label class="col-form-label col-md-2">{{ __('pages.number_of_family_members') }}</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="Number of family member(s)" id="number_of_family_member" name="number_of_family_member" required="required" value="">
+                                                <input type="text" class="form-control" placeholder="Number of family member(s)" id="number_of_family_member" name="number_of_family_member" value="">
                                             </div>
                                         </div>
                                          
@@ -370,6 +384,8 @@
 <script>
 $( function() {
 $( "#dob" ).datepicker({ dateFormat: 'yy-mm-dd' });
+$( "#in_date" ).datepicker({ dateFormat: 'yy-mm-dd' });
+$( "#out_date" ).datepicker({ dateFormat: 'yy-mm-dd' });
 $( "#last_vata_receive_date" ).datepicker({ dateFormat: 'yy-mm-dd' });
 } );
 </script>

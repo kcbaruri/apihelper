@@ -71,7 +71,7 @@
                                                     <th>{{ __('pages.tbl_sl_number_column') }}</th>
                                                     <th>{{ __('pages.tbl_photo_column') }}</th>
                                                     <th>{{ __('pages.tbl_name_column') }}</th>
-                                                    <th>{{ __('sidebar.vatatypes') }}</th>
+                                                    <th>{{ __('pages.mobile_no') }}</th>
                                                     <th>{{ __('pages.nid') }}</th>
                                                     <th>{{ __('pages.tbl_action_column') }}</th>
                                                 </tr>
@@ -85,23 +85,22 @@
                                                         <?php echo $conuter;?>
                                                     </td>
                                                     <td>
-                                                         <img style="border-radius: 50%;" src="<?php echo asset($tenant->image);?>" width="100px" height="100px">
+                                                         <img style="border-radius: 50%;" src="<?php echo asset($tenant->photo);?>" width="100px" height="100px">
                                                     </td>    
                                                     <td>
                                                         <h2 class="table-avatar">
                                                             <a href="#"><?php echo $tenant->name;?></a>
                                                         </h2>
-                                                    </td>                                      <td><?php echo $tenant->vatatype->name;?></td>              
+                                                    </td>                                     
+                                                     <td><?php echo $tenant->mobile_number;?></td>              
                                                     <td><?php echo $tenant->nid;?></td>
                                                     <td class="">
                                                         <div class="actions">
-                                                            <a class="btn btn-sm btn-info" href="{{ route('admin.tenants.view', $citizen->id) }}">
+                                                            <a class="btn btn-sm btn-info" href="{{ route('admin.tenants.view', $tenant->id) }}">
                                                                 <i class="fe fe-eye"></i> {{ __('pages.view') }}
                                                             </a>
-                                                            <a class="btn btn-sm btn-secondary" href="{{ route('admin.tenants.vata-handover', $citizen->id) }}">
-                                                                <i class="fe fe-pencil"></i> {{ __('pages.vata_handover') }}
-                                                            </a>
-                                                            <a class="btn btn-sm bg-success-light" href="{{ route('admin.tenants.edit', $citizen->id) }}">
+                                                           
+                                                            <a class="btn btn-sm bg-success-light" href="{{ route('admin.tenants.edit', $tenant->id) }}">
                                                                 <i class="fe fe-pencil"></i> {{ __('pages.edit') }}
                                                             </a>
                                                             <form action="{{ route('admin.tenants.delete', $tenant->id) }}" method="post" class="btn-group">

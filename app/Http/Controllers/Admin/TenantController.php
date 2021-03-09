@@ -6,8 +6,8 @@ use App\Models\Floor;
 /*use App\Models\District;
 use App\Models\Thana;
 use App\Models\Union;
-use App\Models\Village;
-use App\Models\Vatatype;*/
+use App\Models\Village;*/
+use App\Models\Admin;
 use App\Models\Flat;
 use App\Models\Tenant;
 use App\Traits\ImageUploadTrait;
@@ -43,6 +43,19 @@ class TenantController extends Controller
         return view('admin.tenants.create', compact('floors', 'flats', 'familyHeads'));
     }
 
+
+    private function getFamilyHeadInfo(Request $request){
+        
+        $tenant = Tenant::create([
+            'is_master' => $request->input('is_master')]);
+
+        return $tenant;
+    }
+
+    private function getFamilyMemberInfo(Request $request){
+        dd("Family member");
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -53,58 +66,63 @@ class TenantController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
-            'father_name' => ['required','string'],
-            'mother_name' => ['required','string'],
             'dob' => ['required'],
-            'profession_id' => 'required|numeric|gt:0',
-            'monthly_income' => 'required|numeric|gt:0',
-            'annual_income' => 'required|numeric|gt:0',
-            'vata_book_number' => ['required'],
-            'bank' => ['required'],
-            'bank_branch' => ['required'],
-            'bank_account_number' => ['required'],
-            'nid' => ['required','numeric','unique:citizens'],
+            //'profession_id' => 'required|numeric|gt:0',
+            //'mobile_number' => 'required|string',
+           // 'nid' => ['required','numeric','unique:tenants'],
         ])->validate();
+
+        $tenant = new Tenant();
         
         try {
-            $citizen = Citizen::create([
-                'vata_type_id' => $request->input('vata_type_id'),
-                'name' => $request->input('name'),
-                'image' => '',
-                'spouse_name' => $request->input('spouse_name'),
-                'is_spouse_alive' => $request->input('is_spouse_alive'),
-                'father_name' => $request->input('father_name'),
-                'mother_name' => $request->input('mother_name'),
-                'dob' => date('Y-m-d',strtotime($request->input('dob'))),
-                'sex' => $request->input('sex'),
-                'vata_book_number' => $request->input('vata_book_number'),
-                'bank' => $request->input('bank'),
-                'bank_branch' => $request->input('bank_branch'),
-                'bank_account_number' => $request->input('bank_account_number'),
-                'division_id' => $request->input('division_id'),
-                'district_id' => $request->input('district_id'),
-                'profession_id' => $request->input('profession_id'),
-                'monthly_income' => $request->input('monthly_income'),
-                'annual_income' => $request->input('annual_income'),
-                'thana_id' => $request->input('thana_id'),
-                'union_id' => $request->input('union_id'),
-                'village_id' => $request->input('village_id'),
-                'ward' => $request->input('ward'),
-                'nid' => $request->input('nid'),
-                'blood_group' => $request->input('blood_group'),
-                'last_vata_receive_date' => $request->input('last_vata_receive_date'),
-                'receive_amount' => $request->input('receive_amount'),
-                'religion' => $request->input('religion')
-            ]);
+            
+            if($request->input('is_master') == "on"){
+                $tenant = Tenant::create([
+                    'is_master' => 1,
+                    'name' => $request->input('name'),
+                    'photo' => '',
+                    'is_flat_owner' => $request->input('is_flat_owner'),
+                    'family_head_id' => $request->input('family_head_id'),
+                    'floor_id' => $request->input('floor_id'),
+                    'flat_id' => $request->input('flat_id'),
+                    'dob' => date('Y-m-d',strtotime($request->input('dob'))),
+                    'gender' => $request->input('gender'),
+                    'nid' => $request->input('nid'),
+                    'religion' => $request->input('religion'),
+                    'notice_period_in_month' => $request->input('notice_period_in_month'),
+                    'mobile_number' => $request->input('mobile_number'),
+                    'email' => $request->input('email'),
+                    'permanent_address' => $request->input('permanent_address'),
+                    'profession_id' => $request->input('profession_id'),
+                    'advance_amount' => $request->input('advance_amount'),
+                    'user_id' => $request->input('user_id'),
+                    'payment_due_date' => $request->input('payment_due_date'),
+                    'in_date' => $request->input('in_date'),
+                    'out_date' => $request->input('out_date'),
+                    'no_of_family_members' => $request->input('no_of_family_members'),
+                    'created_by' => Admin::find(auth('admin')->user()->id)->id
+                ]);
+            }
+            else{
+                $tenant = Tenant::create([
+                    'is_master' => 0,
+                    'name' => $request->input('name'),
+                    'is_flat_owner' => 0,
+                    'dob' => date('Y-m-d',strtotime($request->input('dob'))),
+                    'gender' => $request->input('gender'),
+                    'religion' => $request->input('religion'),
+                    'created_by' => Admin::find(auth('admin')->user()->id)->id
+                ]);
+            }
 
-            $citizen->image = $this->uploadFiles($request,'images/',$citizen->id);
-            $citizen->save();
+            $tenant->photo = $this->uploadFiles($request,'images/', $tenant->id);
+            $tenant->save();
         } catch (\Exception $e) {
             dd($e);
             return redirect()->back()->withErrors("Something went wrong");
         }
 
-        return redirect()->route('admin.citizens', ['citizen'=>$citizen])->with('success', "Successfully created Citizen");
+        return redirect()->route('admin.tenants', ['tenant'=>$tenant])->with('success', "Tenant has been created successfully.");
     }
 
     /**

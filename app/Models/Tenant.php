@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Tenant extends Model {
 
 	protected $table = 'tenants';
-    protected $guarded = ['id', 'created_at', 'updated_at'];
-/*
-    public function vatatype()
+
+	//protected $fillable = ['is_master'];
+   protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    /* public function vatatype()
 	{
 	return $this->belongsTo('App\Models\Vatatype', 'vata_type_id', 'id');
 	}
