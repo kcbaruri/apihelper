@@ -39,12 +39,12 @@ Route::namespace('Admin')->middleware(['auth.admin', 'setlocale'])->group(functi
 	Route::post('/flats/delete/{id}', 'FlatController@delete')->name('flats.delete');
 	Route::post('/flats/store', 'FlatController@store')->name('flats.store');
 
-	Route::any('/thanas', 'ThanaController@index')->name("thanas");
-	Route::get('/thanas/create', 'ThanaController@create')->name('thanas.create');
-	Route::get('/thanas/edit/{id}', 'ThanaController@edit')->name('thanas.edit');
-	Route::post('/thanas/update/{id}', 'ThanaController@update')->name('thanas.update');
-	Route::post('/thanas/delete/{id}', 'ThanaController@delete')->name('thanas.delete');
-	Route::post('/thanas/store', 'ThanaController@store')->name('thanas.store');
+	Route::any('/bills', 'BillController@index')->name("bills");
+	Route::get('/bills/create', 'BillController@create')->name('bills.create');
+	Route::get('/bills/edit/{id}', 'BillController@edit')->name('bills.edit');
+	Route::post('/bills/update/{id}', 'BillController@update')->name('bills.update');
+	Route::post('/bills/delete/{id}', 'BillController@delete')->name('bills.delete');
+	Route::post('/bills/store', 'BillController@store')->name('bills.store');
 
 	Route::any('/unions', 'UnionController@index')->name("unions");
 	Route::get('/unions/create', 'UnionController@create')->name('unions.create');
@@ -76,6 +76,16 @@ Route::namespace('Admin')->middleware(['auth.admin', 'setlocale'])->group(functi
 	Route::post('/tenants/store', 'TenantController@store')->name('tenants.store');
 	Route::get('/tenants/vata-handover/{id}', 'TenantController@vataHandover')->name('tenants.vata-handover');
 	Route::post('/tenants/store-handover', 'TenantController@storeHandover')->name('tenants.store-handover');
+
+
+	Route::any('/flatowners', 'FlatOwnerController@index')->name("flatowners");
+	Route::get('/flatowners/create', 'FlatOwnerController@create')->name('flatowners.create');
+	Route::get('/flatowners/view/{id}', 'FlatOwnerController@show')->name('flatowners.view');
+	Route::get('/flatowners/edit/{id}', 'FlatOwnerController@edit')->name('flatowners.edit');
+	Route::post('/flatowners/update/{id}', 'FlatOwnerController@update')->name('flatowners.update');
+	Route::post('/flatowners/delete/{id}', 'FlatOwnerController@delete')->name('flatowners.delete');
+	Route::post('/flatowners/store', 'FlatOwnerController@store')->name('flatowners.store');
+
 
 	Route::get('/vata-handovers', 'VatahandoverController@index')->name("vata-handovers");
 	

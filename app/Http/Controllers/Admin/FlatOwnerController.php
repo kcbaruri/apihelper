@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Floor;
 use App\Models\Admin;
-use App\Models\Flat;
+use App\Models\FlatOwner;
 use App\Models\Tenant;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
-class TenantController extends Controller
+class FlatOwnerController extends Controller
 {
     use ImageUploadTrait;
     /**
@@ -21,9 +21,9 @@ class TenantController extends Controller
      */
     public function index(Request $request)
     {
-        $query = new Tenant();
-        $tenants = $query->orderBy('name', 'ASC')->get();
-        return view('admin.tenants.index', compact('tenants'));
+        $query = new FlatOwner();
+        $flatowners = $query->orderBy('name', 'ASC')->get();
+        return view('admin.flatowners.index', compact('flatowners'));
     }
 
     /**
@@ -33,23 +33,7 @@ class TenantController extends Controller
      */
     public function create()
     {
-        $floors = Floor::pluck('name', 'id');
-        $familyHeads = Tenant::where('is_master', true)->pluck('name', 'id');
-        $flats = Flat::get();
-        return view('admin.tenants.create', compact('floors', 'flats', 'familyHeads'));
-    }
-
-
-    private function getFamilyHeadInfo(Request $request){
-        
-        $tenant = Tenant::create([
-            'is_master' => $request->input('is_master')]);
-
-        return $tenant;
-    }
-
-    private function getFamilyMemberInfo(Request $request){
-        dd("Family member");
+        return view('admin.flatowners.create');
     }
 
     /**
@@ -68,57 +52,32 @@ class TenantController extends Controller
            // 'nid' => ['required','numeric','unique:tenants'],
         ])->validate();
 
-        $tenant = new Tenant();
         
         try {
-            
-            if($request->input('is_master') == "on"){
-                $tenant = Tenant::create([
-                    'is_master' => 1,
+                $flatowner = FlatOwner::create([
                     'name' => $request->input('name'),
                     'photo' => '',
-                    'is_flat_owner' => $request->input('is_flat_owner'),
-                    'family_head_id' => $request->input('family_head_id'),
-                    'floor_id' => $request->input('floor_id'),
-                    'flat_id' => $request->input('flat_id'),
                     'dob' => date('Y-m-d',strtotime($request->input('dob'))),
                     'gender' => $request->input('gender'),
                     'nid' => $request->input('nid'),
+                    'profession_id' => $request->input('profession_id'),
                     'religion' => $request->input('religion'),
-                    'notice_period_in_month' => $request->input('notice_period_in_month'),
                     'mobile_number' => $request->input('mobile_number'),
                     'email' => $request->input('email'),
                     'permanent_address' => $request->input('permanent_address'),
                     'profession_id' => $request->input('profession_id'),
-                    'advance_amount' => $request->input('advance_amount'),
-                    'user_id' => $request->input('user_id'),
-                    'payment_due_date' => $request->input('payment_due_date'),
-                    'in_date' => $request->input('in_date'),
-                    'out_date' => $request->input('out_date'),
-                    'no_of_family_members' => $request->input('no_of_family_members'),
                     'created_by' => Admin::find(auth('admin')->user()->id)->id
                 ]);
-            }
-            else{
-                $tenant = Tenant::create([
-                    'is_master' => 0,
-                    'name' => $request->input('name'),
-                    'is_flat_owner' => 0,
-                    'dob' => date('Y-m-d',strtotime($request->input('dob'))),
-                    'gender' => $request->input('gender'),
-                    'religion' => $request->input('religion'),
-                    'created_by' => Admin::find(auth('admin')->user()->id)->id
-                ]);
-            }
 
-            $tenant->photo = $this->uploadFiles($request,'images/', $tenant->id);
-            $tenant->save();
-        } catch (\Exception $e) {
+                $flatowner->photo = $this->uploadFiles($request,'images/', $flatowner->id);
+                $flatowner->save();
+            }
+        catch (\Exception $e) {
             dd($e);
             return redirect()->back()->withErrors("Something went wrong");
         }
 
-        return redirect()->route('admin.tenants', ['tenant'=>$tenant])->with('success', "Tenant has been created successfully.");
+        return redirect()->route('admin.flatowners', ['flatowner'=>$flatowner])->with('success', "Flat owner has been created successfully.");
     }
 
     /**

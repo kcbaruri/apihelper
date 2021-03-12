@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Floor;
 use App\Models\Flat;
+use App\Models\FlatOwner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -43,8 +44,9 @@ class FlatController extends Controller
      */
     public function create()
     {
+        $flatowners = FlatOwner::where('status','=',0)->orderBy('name', 'asc')->get();
         $floors = Floor::where('status','=',1)->orderBy('name', 'asc')->get();
-        return view('admin.flats.create', compact('floors'));
+        return view('admin.flats.create', compact('floors', 'flatowners'));
     }
 
     /**

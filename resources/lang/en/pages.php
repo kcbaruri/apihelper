@@ -81,6 +81,9 @@ return[
 	'add_division'=>'Add Division',
 	'new_division'=>'New Division',
 
+	'add_flatowner'=>'Add Flat Owner',
+	'new_flatowner'=>'New Flat Owner',
+
 	'add_flat'=>'Add Flat',
 	'new_flat'=>'New Flat',
 
