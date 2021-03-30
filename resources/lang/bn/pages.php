@@ -94,6 +94,7 @@ return[
 	'flatowners'=> 'ফ্লাট এর মালিক',
 	'add_flatowner' => 'ফ্লাট এর নতুন মালিক যোগ করুন ',
 	'new_flatowner' => 'ফ্লাট এর নতুন মালিক',
+	'flatowner_name' => 'ফ্লাট এর মালিক',
 
 	//Data manipulation
 	'add_new'=> "নতুন যুক্ত করুন",

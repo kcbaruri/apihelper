@@ -80,7 +80,7 @@
                                                     <th>{{ __('pages.tbl_sl_number_column') }}</th>
                                                     <th>{{ __('pages.tbl_name_column') }}</th>
                                                     <th>{{ __('sidebar.floors') }}</th>
-                                                    <th>{{ __('pages.tbl_description_column') }}</th>
+                                                    <th>{{ __('pages.flatowner_name') }}</th>
                                                     <th>{{ __('pages.tbl_action_column') }}</th>
                                                 </tr>
                                             </thead>
@@ -100,7 +100,7 @@
                                                         </h2>
                                                     </td>
                                                     <td><?php echo $flat->floor->name;?></td>
-                                                    <td style="max-width:220px; white-space: normal;"><?php  echo $flat->description; ?></td>                                                    
+                                                    <td style="max-width:220px; white-space: normal;"><?php  echo $flat->flatowner->name; ?></td>                                                    
                                                     <td class="">
                                                         <div class="actions">
                                                             <a class="btn btn-sm bg-success-light" href="{{ route('admin.flats.edit', $flat->id) }}">

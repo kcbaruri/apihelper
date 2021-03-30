@@ -104,6 +104,7 @@ return[
 	'flatowners'=> 'Flat Owner',
 	'add_flatowner' => 'Add Flat Owner',
 	'new_flatowner' => 'New Flat Owner',
+	'flatowner_name' => 'Flat Owner',
 
 	//Data manipulation
 	

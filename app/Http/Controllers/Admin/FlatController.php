@@ -20,7 +20,7 @@ class FlatController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Flat::with('floor')->where('status','!=','-1');
+        $query = Flat::with('floor')->where('status','!=','-1') ;
         if($request->floor_id > 0){
             $query->where('floor_id', '=', $request->input('floor_id'));
         }
