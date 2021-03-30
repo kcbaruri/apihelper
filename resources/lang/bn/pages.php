@@ -91,6 +91,9 @@ return[
 
 	'add_floor'=>'তলা যোগ করুন',
 	'new_floor'=>'নতুন তলা',
+	'flatowners'=> 'ফ্লাট এর মালিক',
+	'add_flatowner' => 'ফ্লাট এর নতুন মালিক যোগ করুন ',
+	'new_flatowner' => 'ফ্লাট এর নতুন মালিক',
 
 	//Data manipulation
 	'add_new'=> "নতুন যুক্ত করুন",

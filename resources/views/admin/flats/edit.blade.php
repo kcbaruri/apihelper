@@ -61,6 +61,19 @@
                                         </div>
 
                                         <div class="form-group row">
+                                            <label class="col-form-label col-md-2">{{ __('pages.flatowners') }}</label>
+                                            <div class="col-md-10">
+                                            <select name="flat_owner_id" id="flat_owner_id" class="form-control btn btn-secondary dropdown-toggle">
+                                            <option value="" selected>-- Select One --</option>
+                                            @foreach($flatowners as $id=>$flatowner)
+                                                <option value="{{$flatowner->id}}" <?php if($flatowner->id == $flat->flat_owner_id) echo "selected=selected"; else echo "";?>>{{$flatowner->name}}</option>
+                                            @endforeach
+                                            </select>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.tbl_description_column') }}</label>
                                             <div class="col-md-10">
                                             <textarea class="form-control" rows ="6" placeholder="Description" id="description" name="description"><?php echo $flat->description;?></textarea>

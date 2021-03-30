@@ -57,6 +57,7 @@ class FlatController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
             'floor_id' => ['required', 'integer']
@@ -66,6 +67,7 @@ class FlatController extends Controller
             $flat = Flat::create([
                 'name' => $request->input('name'),
                 'description' => $request->input('description'),
+                'flat_owner_id' =>  $request->input('flat_owner_id'),
                 'floor_id' => $request->input('floor_id'),
                 'status' => $request->input('status')
             ]);
@@ -99,9 +101,11 @@ class FlatController extends Controller
      */
     public function edit(Request $request, $id)
     {
+        $query = new FlatOwner();
         $flat = Flat::find($id);
         $floors = Floor::where('status','=',1)->orderBy('name', 'asc')->get();
-        return view('admin.flats.edit')->with(compact( 'flat','floors'));
+        $flatowners = $query->orderBy('name', 'ASC')->get();
+        return view('admin.flats.edit')->with(compact( 'flat','floors', 'flatowners'));
     }
 
     /**
@@ -115,7 +119,8 @@ class FlatController extends Controller
     { 
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
-            'floor_id' => ['required', 'integer']
+            'floor_id' => ['required', 'integer'],
+            'flat_owner_id' => ['required', 'integer']
         ])->validate();
 
         try {
@@ -127,6 +132,7 @@ class FlatController extends Controller
             $flat->name = $request->input('name');
             $flat->description = $request->input('description');
             $flat->floor_id = $request->input('floor_id');
+            $flat->flat_owner_id = $request->input('flat_owner_id');
             $flat->status = $request->input('status');
             $flat->save();
      

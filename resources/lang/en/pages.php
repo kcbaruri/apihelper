@@ -101,6 +101,9 @@ return[
 
 	'add_floor'=>'Add Floor',
 	'new_floor'=>'New Floor',
+	'flatowners'=> 'Flat Owner',
+	'add_flatowner' => 'Add Flat Owner',
+	'new_flatowner' => 'New Flat Owner',
 
 	//Data manipulation
 	
