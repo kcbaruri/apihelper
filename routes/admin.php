@@ -45,6 +45,9 @@ Route::namespace('Admin')->middleware(['auth.admin', 'setlocale'])->group(functi
 	Route::post('/bills/update/{id}', 'BillController@update')->name('bills.update');
 	Route::post('/bills/delete/{id}', 'BillController@delete')->name('bills.delete');
 	Route::post('/bills/store', 'BillController@store')->name('bills.store');
+	Route::get('/bills/show/{id}', 'BillController@show')->name('bills.show');
+	Route::get('/bills/download/{id}', 'BillController@download')->name('bills.download');
+	Route::post('/get-flats', 'LocationController@getFlats');
 
 	Route::any('/unions', 'UnionController@index')->name("unions");
 	Route::get('/unions/create', 'UnionController@create')->name('unions.create');

@@ -4,7 +4,7 @@ namespace App\Traits;
 
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Division;
+use App\Models\Flat;
 use App\Models\District;
 use App\Models\Thana;
 use App\Models\Union;
@@ -17,9 +17,9 @@ trait LocationTrait
     return $states;
   }
 
-  public function get_district_dropdown($division_id){
-    $district = District::where('division_id',$division_id)->orderBy('name')->pluck('name','id');
-    return $district;
+  public function get_flat_dropdown($floor_id){
+    $flats = Flat::where('floor_id',$floor_id)->orderBy('name')->pluck('name','id');
+    return $flats;
   }
 
   public function get_thana_dropdown($district_id){

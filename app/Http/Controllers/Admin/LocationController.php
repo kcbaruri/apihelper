@@ -25,9 +25,9 @@ class LocationController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-     public function getDistrict(Request $request)
+     public function getFlats(Request $request)
      {
-         return json_encode($this->get_district_dropdown($request->division_id));
+         return json_encode($this->get_flat_dropdown($request->floor_id));
      }
      public function getThana(Request $request)
      {

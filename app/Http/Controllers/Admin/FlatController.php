@@ -57,7 +57,6 @@ class FlatController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
             'floor_id' => ['required', 'integer']

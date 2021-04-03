@@ -58,6 +58,7 @@ return[
 	'delete'=>'মুছে ফেলুন',
 	'search'=>'অনুসন্ধান করুন',
 	'download'=>' প্রতিবেদন ডাউনলোড করুন',
+	'download_bill'=>' বিল ডাউনলোড করুন',
 	'last_receiving_date'=>'সর্বশেষ গ্রহণের তারিখ',
 	'nid'=>'জাতীয় পরিচয়পত্র নম্বর',
 	'addadmin'=>'প্রশাসক যুক্ত করুন',
@@ -70,6 +71,9 @@ return[
 	'updateutype'=>'হালনাগাদ',
 	'add_billhead'=>'বিল হেড যোগ করুন',
 	'new_billhead'=>'নতুন বিল হেড',
+	'bill_head_name' => 'বিল হেডের নাম',
+	'billable_amount'=>'পরিমান (টাকায় )',
+	'individual_bill_detail' => 'একক বিলের বিশদ',
 
 	'add_tenant'=>'ভাড়াটিয়া যোগ করুন',
 	'new_tenant'=>'নতুন ভাড়াটিয়া',
@@ -119,7 +123,12 @@ return[
 	'select_nid'=>'এনআইডি প্রবেশ করান',
 	'select_year'=>'বছর নির্বাচন করুন',
 	'select_month'=>'মাস নির্বাচন করুন',
-	'handover_amount'=>'হস্তান্তরের পরিমান '
+	'handover_amount'=>'হস্তান্তরের পরিমান ',
+
+	'bill_management' => 'বিল ব্যবস্থাপনা',
+	'process_mon_bill' => 'মাসিক বিলের  হিসাব',
+	'billing_year' => 'বিলের বছর',
+	'billing_month' => 'বিলের মাস',
 
 	
 ];

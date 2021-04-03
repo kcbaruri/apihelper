@@ -61,6 +61,7 @@ return[
 	'delete'=>'Delete',
 	'search'=>'Search',
 	'download'=>'Download Report',
+	'download_bill'=>'Download Bill',
 	'last_receiving_date'=>'Last Receiving Date',
 	'nid'=>'National Identity Number',
 	'addadmin'=>'Add Administrator',
@@ -74,6 +75,9 @@ return[
 
 	'add_billhead'=>'Add Bill Head',
 	'new_billhead'=>'New Bill Head',
+
+	'bill_head_name' => 'Bill Head Name',
+	'billable_amount'=>'Amount(BDT)',
 
 	'add_tenant'=>'Add Tenant',
 	'new_tenant'=>'New Tenant',
@@ -131,7 +135,12 @@ return[
 	'select_nid'=>'Enter NID',
 	'select_year'=>'Select Year',
 	'select_month'=>'Select Month',
-	'handover_amount'=>'Handover Amouunt'
+	'handover_amount'=>'Handover Amouunt',
+
+	'bill_management' => 'Bill Management',
+	'process_mon_bill' => 'Process Monthly Bill',
+	'billing_year' => 'Billin Year',
+	'billing_month' => 'Billing Month',
 ];
 
 ?>

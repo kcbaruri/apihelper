@@ -14,7 +14,6 @@ class Bill extends Model
 
     protected $fillable = 
         ['name',
-        'tenant_id',
         'billing_month',
         'billing_year', 
         'created_by',
@@ -25,9 +24,9 @@ class Bill extends Model
     $this->attributes['created_by'] = auth()->id();
     }
 
-    public function tenant()
+    public function flat()
     {
-        return $this->belongsTo(Tenant::class);
+        return $this->belongsTo(Flat::class);
     }
 
     public function getBillMonthAtAttribute($value)

@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Tenant;
+use App\Models\Floor;
+use App\Models\Flat;
 use App\Models\Admin;
 use App\Models\BillHead;
 use App\Models\Bill;
 use DB;
+use PDF;
 
 class BillController extends Controller
 {
@@ -17,23 +19,7 @@ class BillController extends Controller
        // $this->middleware(IsAdmin::class);
     }
 
-    public function list()
-    {
-        $sqlCommand = DB::table('monthly_bills')
-        ->leftJoin('tenants', 'monthly_bills.tenant_id', '=', 'tenants.id')
-        ->select('monthly_bills.*', 'tenants.id', 'tenants.name');
-
-        $sqlCommand->where('monthly_bills.billing_year', '=', date("Y"));
-        $sqlCommand->where('monthly_bills.billing_month', '=', date("m"));
-       
-
-        $generatedBills = $sqlCommand->orderBy('tenants.id', 'ASC')->get();
-
-      
-       
-        return $generatedBills::paginate();
-    }
-
+   
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +27,8 @@ class BillController extends Controller
      */
     public function index()
     {
-        return view('admin.bills.index');
+        $generatedbills = Bill::all();
+        return view('admin.bills.index', compact('generatedbills'));
     }
 
     /**
@@ -51,9 +38,10 @@ class BillController extends Controller
      */
     public function create()
     {
-        $familyHeads = Tenant::where('is_master', true)->pluck('name', 'id');
-        $billHeads = BillHead::all();
-        return view('bills.create', compact('familyHeads', 'billHeads'));
+        $floors = Floor::all();
+        $flats = Flat::where('1 == 2');
+        $billheads = BillHead::all();
+        return view('admin.bills.create', compact('floors', 'flats', 'billheads'));
     }
 
     /**
@@ -64,7 +52,9 @@ class BillController extends Controller
      */
     public function store(Request $request)
     {
-        $billHeads = BillHead::where('is_deleted', 0)->pluck('name', 'id');
+        $billHeads = BillHead::where('status', 0)->pluck('name', 'id');
+
+       // dd($request);
 
         $bills = new Bill();
         foreach($billHeads as $key=>$name){
@@ -143,18 +133,30 @@ class BillController extends Controller
             else if($key ==   25){
                 $bills->col_25 = $request['col_25'];
             }
+            else if($key ==   26){
+                $bills->col_26 = $request['col_26'];
+            }
+            else if($key ==   27){
+                $bills->col_27 = $request['col_27'];
+            }
+            else if($key ==   28){
+                $bills->col_28 = $request['col_28'];
+            }
+            else if($key ==   29){
+                $bills->col_29 = $request['col_29'];
+            }
         }
 
-       $bills->created_by = auth()->id();
-       $bills->tenant_id = 1;// $request['tenant_id'];
-       $bills->billing_month = 12;
-       $bills->billing_year = 2020;
+       $bills->created_by = 1; // auth()->id();
        $bills->is_deleted = 0;
-        
+       $bills->billing_month = $request['billing_month'];
+       $bills->billing_year = $request['billing_year'];
+       $bills->is_paid = 0;
 
+       //dd($bills);
        $bills->save();
 
-       return view('bills.index');
+       return redirect()->route('admin.bills')->with('success', "Monthly bill has been generated successfully.");
 
     }
 
@@ -164,9 +166,10 @@ class BillController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function getFlatsByFloor($id)
     {
-        //
+        $flats = Flat::where('floor_id',$id)->orderBy('name')->pluck('name','id');
+        return json_encode($flats);
     }
 
     /**
@@ -178,6 +181,22 @@ class BillController extends Controller
     public function edit($id)
     {
         //
+    }
+
+    public function show($id)
+    {
+       return view("admin.bills.show");
+    }
+
+    public function download($id)
+    {
+        $query = BillHead::orderBy('name', 'asc');
+        $billheads =  $query->get();
+
+        $billdetail = Bill::find($id);
+
+        $pdf = PDF::loadView('admin.bills.individual_detail_report', compact('billheads', 'billdetail'));
+        return $pdf->download('bill_detail.pdf')->header('Content-Type','application/pdf');
     }
 
     /**
