@@ -78,6 +78,7 @@ return[
 
 	'bill_head_name' => 'Bill Head Name',
 	'billable_amount'=>'Amount(BDT)',
+	'individual_bill_detail' => 'Individual Bill Detail',
 
 	'add_tenant'=>'Add Tenant',
 	'new_tenant'=>'New Tenant',

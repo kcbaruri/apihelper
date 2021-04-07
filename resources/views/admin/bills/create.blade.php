@@ -89,7 +89,7 @@
                                             <label class="col-form-label col-md-2">{{ __('sidebar.floors') }}</label>
                                             <div class="col-md-10">
                                             <select name="floor_id" id="floor_id" class="form-control" onchange="getFlatsByFloor(this.value,'flat_id', '')">
-                                                <option value="0" selected disabled>Please Select Floor</option>
+                                                <option value="0">Please Select Floor</option>
                                                 <?php foreach ($floors as $floor): ?>
                                                 <option value="{{$floor->id}}">
                                                 <?php  echo $floor->name; ?></option>

@@ -50,9 +50,9 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php if(count($generatedbills) > 0) {
+                                                <?php if(count($generatedbill) > 0) {
                                                     $counter = 0;
-                                                    foreach($generatedbills as $generatedbill) { $counter++; ?>
+                                                    foreach($generatedbill as $generatedbill) { $counter++; ?>
                                                 <tr>
                                                     <td style="max-width:20px; white-space: normal;">
                                                         <h2 class="table-avatar">
@@ -73,10 +73,10 @@
                                                             <a class="btn btn-sm bg-success-light" href="{{ route('admin.bills.download', $generatedbill->id) }}">
                                                                 <i class="fe fe-pencil"></i> {{ __('pages.download_bill') }}
                                                             </a>
-                                                            <a class="btn btn-sm bg-success-light" href="{{ route('admin.billheads.edit', $generatedbill->id) }}">
+                                                            <a class="btn btn-sm bg-success-light" href="{{ route('admin.bills.edit', $generatedbill->id) }}">
                                                                 <i class="fe fe-pencil"></i> {{ __('pages.edit') }}
                                                             </a>
-                                                            <form action="{{ route('admin.billheads.delete', $generatedbill->id) }}" method="post" class="btn-group">
+                                                            <form action="{{ route('admin.bills.delete', $generatedbill->id) }}" method="post" class="btn-group">
                                                             {{ csrf_field() }}
                                                             <button title="Delete" type="submit" class="btn btn-sm bg-danger-light" onclick="return confirm('Are you sure you want to delete?')"><i class="fe fe-trash"></i> {{ __('pages.delete') }}&nbsp;</button>
                                                             </form>
