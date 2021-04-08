@@ -47,16 +47,14 @@ class BillHeadController extends Controller
         ])->validate();
         
         try {
-            $division = BillHead::create([
+            $billhead = BillHead::create([
                 'name' => $request->input('name'),
                 'description' => $request->input('description'),
                 'status' => $request->input('status')
             ]);
 
-            $maxId = BillHead::max('id');
-            $newColumnName = 'col_'.$maxId;
-
-            DB::select(DB::raw('ALTER TABLE monthly_bills ADD '.$newColumnName.'  double(8,2) NOT NULL DEFAULT 0.00;'));
+            $newColumnName = 'col_'.$billhead->id;
+            DB::unprepared('ALTER TABLE monthly_bills ADD '.$newColumnName.'  double(8,2) NOT NULL DEFAULT 0.00;');
 
         } catch (\Exception $e) {
             //dd($e);
