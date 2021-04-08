@@ -51,7 +51,6 @@ class FlatOwnerController extends Controller
             //'mobile_number' => 'required|string',
            // 'nid' => ['required','numeric','unique:tenants'],
         ])->validate();
-
         
         try {
                 $flatowner = FlatOwner::create([
@@ -146,6 +145,7 @@ class FlatOwnerController extends Controller
             $flatowner->profession_id = $request->input('profession_id');
             $flatowner->created_by = Admin::find(auth('admin')->user()->id)->id;
 
+            $flatowner->photo = $this->uploadFiles($request,'images/', $flatowner->id);
             $flatowner->save();
      
         } catch (\Exception $e) {

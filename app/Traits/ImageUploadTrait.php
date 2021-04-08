@@ -9,8 +9,8 @@ trait ImageUploadTrait
     public function uploadFiles($request, $path, $userId = null)
     {
         $fileName = 'default-avatar.png';
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
             $fileExtent = $file->getClientOriginalExtension(); //file extension
             $extent = array('jpeg', 'jpg', 'bmp', 'png', 'svg');
             if (in_array($fileExtent, $extent)) {
