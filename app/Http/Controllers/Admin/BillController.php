@@ -198,9 +198,7 @@ class BillController extends Controller
 
     public function download($id)
     {
-        $query = BillHead::orderBy('name', 'asc');
-        $billheads =  $query->get();
-
+        $billheads = BillHead::all();
         $billdetail = Bill::find($id);
 
         $pdf = PDF::loadView('admin.bills.individual_detail_report', compact('billheads', 'billdetail'));
