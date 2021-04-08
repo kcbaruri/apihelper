@@ -104,10 +104,14 @@ class TenantController extends Controller
                     'is_master' => 0,
                     'name' => $request->input('name'),
                     'is_flat_owner' => 0,
+                    'nid' => $request->input('nid'),
+                    'family_head_id' => $request->input('family_head_id'),
                     'dob' => date('Y-m-d',strtotime($request->input('dob'))),
                     'gender' => $request->input('gender'),
                     'religion' => $request->input('religion'),
-                    'created_by' => Admin::find(auth('admin')->user()->id)->id
+                    'created_by' => Admin::find(auth('admin')->user()->id)->id,
+                    'mobile_number' => $request->input('mobile_number'),
+                    'email' => $request->input('email'),
                 ]);
             }
 
@@ -206,7 +210,7 @@ class TenantController extends Controller
             "72" => "Not Applicable");
 
         $citizen = Citizen::with('division','district','thana','union','village')->find($id);
-        return view('admin.citizens.view')->with(compact( 'citizen', 'professionArray'));
+        return view('admin.tenants.view')->with(compact( 'citizen', 'professionArray'));
     }
 
     /**
@@ -217,14 +221,11 @@ class TenantController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        $citizen = Citizen::find($id);
-        $divisions = Division::where('status','=', 1)->get();
-        $districts = District::where('status','=', 1)->get();
-        $thanas = Thana::where('status','=', 1)->get();
-        $unions = Union::where('status','=', 1)->get();
-        $villages = Village::where('status','=', 1)->get();
-        $vata_types = Vatatype::where('status','=', 1)->get();
-        return view('admin.citizens.edit')->with(compact( 'citizen','divisions','districts','thanas','unions','villages','vata_types'));
+        $tenant = Tenant::find($id);
+        $floors = Floor::pluck('name', 'id');
+        $familyheads = Tenant::where('is_master', true)->pluck('name', 'id');
+        $flats = Flat::get();
+        return view('admin.tenants.edit')->with(compact( 'tenant', 'floors', 'flats', 'familyheads'));
     }
 
     /**
@@ -304,9 +305,9 @@ class TenantController extends Controller
     {
         try {
             
-            $citizen = Citizen::find($id);
-            $citizen->delete();
-            return redirect()->back()->with('success', 'Successfully deleted citizen.');
+            $tenant = Tenant::find($id);
+            $tenant->delete();
+            return redirect()->back()->with('success', 'The tenant has been deleted successfully.');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors('Something went wrong!');
         }
