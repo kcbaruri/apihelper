@@ -135,82 +135,11 @@ class TenantController extends Controller
      */
     public function show($id)
     {
-        $professionArray = array(
-            "1" => "Chiropractor",
-            "2"  => "Dentist",
-            "3" => "Dietitian or Nutritionist",
-            "4" => "Optometrist",
-            "5" => "Pharmacist",
-            "6" => "Physician",
-            "7" => "Physician Assistant",
-            "8" => "Podiatrist",
-            "9" => "Registered Nurse",
-            "10" => "Therapist",
-            "11" => "Veterinarian",
-            "12" =>  "Health Technologist or Technician",
-            "13" => "Other Healthcare Practitioners and Technical Occupation",
-            "14" => "Nursing, Psychiatric, or Home Health Aide",
-            "15" => "Occupational and Physical Therapist Assistant or Aide",
-            "16" =>  "Other Healthcare Support Occupation",
-            "17" =>  "Chief Executive",
-            "18" =>  "General and Operations Manager",
-            "19" =>  "Advertising, Marketing, Promotions, Public Relations, and Sales Manager",
-            "20" => "Operations Specialties Manager (e.g., IT or HR Manager)",
-            "21" =>  "Construction Manager",
-            "22" =>  "Engineering Manager",
-            "23" =>  "Accountant, Auditor",
-            "24" => "Business Operations or Financial Specialist",
-            "25" => "Business Owner",
-            "26" => "Other Business, Executive, Management, Financial Occupation",
-            "27" =>  "Architect, Surveyor, or Cartographer",
-            "28" =>  "Engineer",
-            "29" =>  "Other Architecture and Engineering Occupation",
-            "30" => "Postsecondary Teacher (e.g., College Professor)",
-            "31" =>  "Primary, Secondary, or Special Education School Teacher",
-            "32" =>  "Other Teacher or Instructor",
-            "33" => "Other Education, Training, and Library Occupation",
-            "34" =>  "Arts, Design, Entertainment, Sports, and Media Occupations",
-            "35" =>  "Computer Specialist, Mathematical Science",
-            "36" => "Counselor, Social Worker, or Other Community and Social Service Specialist",
-            "37" => "Lawyer, Judge",
-            "38" => "Life Scientist (e.g., Animal, Food, Soil, or Biological Scientist, Zoologist)",
-            "39" => "Physical Scientist (e.g., Astronomer, Physicist, Chemist, Hydrologist)",
-            "40" =>  "Religious Worker (e.g., Clergy, Director of Religious Activities or Education)",
-            "41" =>  "Social Scientist and Related Worker",
-            "42" => "Other Professional Occupation",
-            "43" => "Supervisor of Administrative Support Workers",
-            "44" =>  "Financial Clerk",
-            "45" => "Secretary or Administrative Assistant",
-            "46" => "Material Recording, Scheduling, and Dispatching Worker",
-            "47" =>  "Other Office and Administrative Support Occupation",
-            "48" => "Protective Service (e.g., Fire Fighting, Police Officer, Correctional Officer)",
-            "49" =>  "Chef or Head Cook",
-            "50" => "Cook or Food Preparation Worker",
-            "51" => "Food and Beverage Serving Worker (e.g., Bartender, Waiter, Waitress)",
-            "52" => "Building and Grounds Cleaning and Maintenance",
-            "53" => "Personal Care and Service (e.g., Hairdresser, Flight Attendant, Concierge)",
-            "54" => "Sales Supervisor, Retail Sales",
-            "55" => "Retail Sales Worker",
-            "56" => "Insurance Sales Agent",
-            "57" => "Sales Representative",
-            "58" => "Real Estate Sales Agent",
-            "59" => "Other Services Occupation",
-            "60" => "Construction and Extraction (e.g., Construction Laborer, Electrician)",
-            "61" => "Farming, Fishing, and Forestry",
-            "62" => "Installation, Maintenance, and Repair",
-            "63" =>  "Production Occupations",
-            "64" =>  "Other Agriculture, Maintenance, Repair, and Skilled Crafts Occupation",
-            "65" =>  "Aircraft Pilot or Flight Engineer",
-            "66" =>  "Motor Vehicle Operator (e.g., Ambulance, Bus, Taxi, or Truck Driver)",
-            "67" =>  "Other Transportation Occupation",
-            "68" =>  "Military",
-            "69" =>  "Homemaker",
-            "70" =>  "Other Occupation",
-            "71" =>  "Don't Know",
-            "72" => "Not Applicable");
-
-        $citizen = Citizen::with('division','district','thana','union','village')->find($id);
-        return view('admin.tenants.view')->with(compact( 'citizen', 'professionArray'));
+        $tenant = Tenant::find($id);
+        $floors = Floor::pluck('name', 'id');
+        $familyheads = Tenant::where('is_master', true)->pluck('name', 'id');
+        $flats = Flat::get();
+        return view('admin.tenants.view')->with(compact( 'tenant', 'floors', 'flats', 'familyheads'));
     }
 
     /**
@@ -313,31 +242,5 @@ class TenantController extends Controller
         }
     }
 
-    public function vataHandover($id){
-        $citizen = Citizen::with('vatatype')->find($id);
-        return view('admin.citizens.vata_handover')->with(compact( 'citizen'));
-    }
-
-    public function storeHandover(Request $request){
-        $validator = Validator::make($request->all(), [
-            'year' => ['required', 'integer'],
-            'month' => ['required', 'string', 'max:255'],
-            'amount' => ['required']
-        ])->validate();
-        
-        try {
-            $handover = Vatahandover::create([
-                'citizen_id' => $request->input('citizen_id'),
-                'year' => $request->input('year'),
-                'month' => $request->input('month'),
-                'amount' => $request->input('amount')
-            ]);
-
-        } catch (\Exception $e) {
-            //dd($e);
-            return redirect()->back()->withErrors("Something went wrong");
-        }
-
-        return redirect()->route('admin.citizens')->with('success', "Successfully created Citizen");
-    }
+    
 }
