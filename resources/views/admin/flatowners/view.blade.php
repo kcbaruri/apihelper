@@ -119,7 +119,8 @@
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.photo') }}</label>
                                             <div class="col-md-10">
-                                                <input type="file" class="form-control" placeholder="Name" id="photo" name="photo">
+                                                <!-- <input type="file" class="form-control" placeholder="Name" id="photo" name="photo"> -->
+                                                <img style="border-radius: 50%;" id="selected_photo" src="<?php echo asset($flatowner->photo);?>" alt="unavailable" width="100px" height="100px"/>
                                             </div>
                                         </div>
 

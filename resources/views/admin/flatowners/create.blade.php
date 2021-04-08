@@ -124,7 +124,8 @@
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.photo') }}</label>
                                             <div class="col-md-10">
-                                                <input type="file" class="form-control" placeholder="Name" id="photo" name="photo">
+                                                <input type="file" class="form-control" placeholder="Name" id="photo" name="photo" onchange="readURL(this);">
+                                                <img style="border-radius: 50%;" id="selected_photo" src="#" alt=""/>
                                             </div>
                                         </div>
 
@@ -283,6 +284,21 @@ $( "#last_vata_receive_date" ).datepicker({ dateFormat: 'yy-mm-dd' });
 </script>
 
 <script type="text/javascript">
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#selected_photo')
+                .attr('src', e.target.result)
+                .width(100)
+                .height(100);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 
 function isMaster() {
         if ($('#is_master').is(':checked')) {
