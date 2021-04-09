@@ -30,7 +30,7 @@ class FlatController extends Controller
         $floors = Floor::where('status','=', 1)->get();
         if($request->search == "download") {
 
-        $pdf = PDF::loadView('admin.flats.district_report', compact('flats'));
+        $pdf = PDF::loadView('admin.flats.flat_report', compact('flats'));
         return $pdf->download('flat.pdf')->header('Content-Type','application/pdf');
         } else {
         return view('admin.flats.index', compact('flats','floors'));

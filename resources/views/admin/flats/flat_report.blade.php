@@ -17,8 +17,8 @@
       
    <div style="text-align: center;" >
          <img src="{{ public_path('samajikadmin/img/logo.png') }}" style="width: 80px; height: 80px"><br/><br/>
-         <span class="logo-text">নাজমহল ভবন</span><br/>
-         <span>উত্তরা, ঢাকা।</span><br/>
+         <span class="logo-text">{{ __('reports.nazmahal') }}</span><br/>
+         <span>{{ __('reports.building_address') }}</span><br/>
          <hr/>
          <h2 style="color:#6f6f6f;margin:0"><span>{{ __('reports.flat_rpt_header') }}</span></h2>
       </div>
