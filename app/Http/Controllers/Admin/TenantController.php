@@ -136,9 +136,9 @@ class TenantController extends Controller
     public function show($id)
     {
         $tenant = Tenant::find($id);
-        $floors = Floor::pluck('name', 'id');
+        $floors = Floor::all();
         $familyheads = Tenant::where('is_master', true)->pluck('name', 'id');
-        $flats = Flat::get();
+        $flats = Flat::where('floor_id', $tenant->floor_id)->orderBy('name', 'asc')->get();
         return view('admin.tenants.view')->with(compact( 'tenant', 'floors', 'flats', 'familyheads'));
     }
 
@@ -151,9 +151,9 @@ class TenantController extends Controller
     public function edit(Request $request, $id)
     {
         $tenant = Tenant::find($id);
-        $floors = Floor::pluck('name', 'id');
+        $floors = Floor::all();
         $familyheads = Tenant::where('is_master', true)->pluck('name', 'id');
-        $flats = Flat::get();
+        $flats = Flat::where('floor_id', $tenant->floor_id)->orderBy('name', 'asc')->get();
         return view('admin.tenants.edit')->with(compact( 'tenant', 'floors', 'flats', 'familyheads'));
     }
 
@@ -168,66 +168,67 @@ class TenantController extends Controller
     { 
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
-            'father_name' => ['required','string'],
-            'mother_name' => ['required','string'],
             'dob' => ['required'],
-            'profession_id' => 'required|numeric|gt:0',
-            'monthly_income' => 'required|numeric|gt:0',
-            'annual_income' => 'required|numeric|gt:0',
-            'vata_book_number' => ['required'],
-            'bank' => ['required'],
-            'bank_branch' => ['required'],
-            'bank_account_number' => ['required'],
-            'nid' => ['required','numeric', 'unique:citizens,nid,'. $id],
+            //'profession_id' => 'required|numeric|gt:0',
+            //'mobile_number' => 'required|string',
+           // 'nid' => ['required','numeric','unique:tenants'],
         ])->validate();
 
+        $tenant = Tenant::find($id);
+        
         try {
-            $citizen = Citizen::find($id);
-
-            if($citizen == null)
-                return redirect()->back()->withErrors("citizen Not Found");
-
-            $citizen->vata_type_id = $request->input('vata_type_id');
-            $citizen->name = $request->input('name');
-            if ($request->hasFile('image')) {
-            $citizen->image = $this->uploadFiles($request,'images/',$id);
+            
+            if($request->input('is_master') == "on"){
+             
+                $tenant->is_master = 1;
+                $tenant->name = $request->input('name');
+                $tenant->photo = '';
+                $tenant->is_flat_owner = $request->input('is_flat_owner');
+                $tenant->family_head_id = $request->input('family_head_id');
+                $tenant->floor_id = $request->input('floor_id');
+                $tenant->flat_id = $request->input('flat_id');
+                $tenant->dob = date('Y-m-d',strtotime($request->input('dob')));
+                $tenant->gender = $request->input('gender');
+                $tenant->blood_group = $request->input('blood_group');
+                $tenant->nid = $request->input('nid');
+                $tenant->religion = $request->input('religion');
+                $tenant->notice_period_in_month = $request->input('notice_period_in_month');
+                $tenant->mobile_number = $request->input('mobile_number');
+                $tenant->email = $request->input('email');
+                $tenant->permanent_address = $request->input('permanent_address');
+                $tenant->profession_id = $request->input('profession_id');
+                $tenant->advance_amount = $request->input('advance_amount');
+                $tenant->user_id = $request->input('user_id');
+                $tenant->payment_due_date = $request->input('payment_due_date');
+                $tenant->in_date = $request->input('in_date');
+                $tenant->out_date = $request->input('out_date');
+                $tenant->no_of_family_members = $request->input('no_of_family_members');
+                $tenant->created_by = Admin::find(auth('admin')->user()->id)->id;
+               
             }
-            $citizen->spouse_name = $request->input('spouse_name');
-            $citizen->profession_id = $request->input('profession_id');
-            $citizen->monthly_income = $request->input('monthly_income');
-            $citizen->annual_income = $request->input('annual_income');
+            else{
+                    $tenant->is_master = 0;
+                    $tenant->name = $request->input('name');
+                    $tenant->is_flat_owner = 0;
+                    $tenant->nid = $request->input('nid');
+                    $tenant->blood_group = $request->input('blood_group');
+                    $tenant->family_head_id = $request->input('family_head_id');
+                    $tenant->dob = date('Y-m-d',strtotime($request->input('dob')));
+                    $tenant->gender = $request->input('gender');
+                    $tenant->religion = $request->input('religion');
+                    $tenant->created_by = Admin::find(auth('admin')->user()->id)->id;
+                    $tenant->mobile_number = $request->input('mobile_number');
+                    $tenant->email = $request->input('email');
+            }
 
-            $citizen->is_spouse_alive = $request->input('is_spouse_alive');
-            $citizen->father_name = $request->input('father_name');
-            $citizen->mother_name = $request->input('mother_name');
-            $citizen->dob = date('Y-m-d',strtotime($request->input('dob')));
-            $citizen->sex = $request->input('sex');
-            $citizen->vata_book_number = $request->input('vata_book_number');
-            $citizen->bank = $request->input('bank');
-            $citizen->bank_branch = $request->input('bank_branch');
-            $citizen->bank_account_number = $request->input('bank_account_number');
-            $citizen->division_id = $request->input('division_id');
-            $citizen->district_id = $request->input('district_id');
-            $citizen->thana_id = $request->input('thana_id');
-            $citizen->union_id = $request->input('union_id');
-            $citizen->village_id = $request->input('village_id');
-            $citizen->ward = $request->input('ward');
-            $citizen->nid = $request->input('nid');
-            $citizen->blood_group = $request->input('blood_group');
-            $citizen->last_vata_receive_date = $request->input('last_vata_receive_date');
-            $citizen->receive_amount = $request->input('receive_amount');
-            $citizen->religion = $request->input('religion');
-            $citizen->status = $request->input('status');
-
-            $citizen->save();
-
-     
+            $tenant->photo = $this->uploadFiles($request,'images/', $tenant->id);
+            $tenant->save();
         } catch (\Exception $e) {
+            dd($e);
             return redirect()->back()->withErrors("Something went wrong");
         }
 
-        return redirect()->route('admin.citizens')
-                         ->with('success', "Successfully updated citizen");
+        return redirect()->route('admin.tenants', ['tenant'=>$tenant])->with('success', "Tenant has been modified successfully.");
     }
 
     public function delete($id)

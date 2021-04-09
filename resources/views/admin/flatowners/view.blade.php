@@ -45,7 +45,7 @@
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.tbl_name_column') }}</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" value="<?php echo $flatowner->name;?>" placeholder="Name" id="name" name="name" required="required" value="">
+                                                <input disabled type="text" class="form-control" value="<?php echo $flatowner->name;?>" placeholder="Name" id="name" name="name" required="required" value="">
                                             </div>
                                         </div>
 
@@ -54,17 +54,17 @@
                                             <div class="col-md-10">
                                                 <div class="radio">
                                                     <label>
-                                                        <input type="radio" name="gender" class="radio" value="Male" <?php if($flatowner->gender == "male") echo "checked= checked"; ?> > Male
+                                                        <input disabled type="radio" name="gender" class="radio" value="Male" <?php if($flatowner->gender == "male") echo "checked= checked"; ?> > Male
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
-                                                        <input type="radio" name="gender" class="radio" value="Female" <?php if($flatowner->gender == "female") echo "checked=checked"; ?>> Female
+                                                        <input disabled type="radio" name="gender" class="radio" value="Female" <?php if($flatowner->gender == "female") echo "checked=checked"; ?>> Female
                                                     </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
-                                                        <input type="radio" name="gender" class="radio" value="Other" <?php if($flatowner->gender == "other") echo "checked=checked"; ?>> Other
+                                                        <input disabled type="radio" name="gender" class="radio" value="Other" <?php if($flatowner->gender == "other") echo "checked=checked"; ?>> Other
                                                     </label>
                                                 </div>                          
                                             </div>
@@ -73,21 +73,21 @@
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.nid') }}</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" value="<?php echo $flatowner->nid;?>" placeholder="National id number" id="nid" name="nid" value="">
+                                                <input disabled type="text" class="form-control" value="<?php echo $flatowner->nid;?>" placeholder="National id number" id="nid" name="nid" value="">
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.dob') }}</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="Date of birth" id="dob" name="dob" required="required" value="<?php echo $flatowner->dob;?>">
+                                                <input disabled type="text" class="form-control" placeholder="Date of birth" id="dob" name="dob" required="required" value="<?php echo $flatowner->dob;?>">
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.blood_group') }}</label>
                                             <div class="col-md-10">
-                                                <select name="blood_group" id="blood_group" class="form-control">
+                                                <select disabled name="blood_group" id="blood_group" class="form-control">
                                                     <option value="0">-- Select One --</option>
                                                     <option value="A+" <?php if($flatowner->blood_group == "A+") echo "selected=selected"; ?>>A+</option>
                                                     <option value="A-" <?php if($flatowner->blood_group =="A-") echo "selected=selected"; ?>>A-</option>
@@ -105,7 +105,7 @@
                                         <div class="form-group row hiden_class">
                                             <label class="col-form-label col-md-2">{{ __('pages.religion') }}</label>
                                             <div class="col-md-10">
-                                                <select name="religion" id="religion" class="form-control">
+                                                <select disabled name="religion" id="religion" class="form-control">
                                                     <option value="0">-- Select One --</option>
                                                     <option value="1" <?php if($flatowner->religion == 1) echo "selected=selected"; ?>>Buddism</option>
                                                     <option value="2" <?php if($flatowner->religion == 2) echo "selected=selected"; ?>>Hinduism</option>
@@ -128,7 +128,7 @@
                                             <label class="col-form-label col-md-2">{{ __('pages.profession') }}</label>
                                             <div class="col-md-10">
                                             <fieldset>
-                                            <select class="form-control dropdown" id="profession_id" name="profession_id">
+                                            <select disabled class="form-control dropdown" id="profession_id" name="profession_id">
                                                 <option value="0" selected="selected" disabled="disabled">-- Select One --</option>
                                                 <optgroup label="Healthcare Practitioners and Technical Occupations:">
                                                 <option value="1">-  Chiropractor</option>
@@ -232,20 +232,20 @@
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.mobile_no') }}</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" value="<?php echo $flatowner->mobile_number;?>" placeholder="Mobile number" id="mobile_number" name="mobile_number" value="">
+                                                <input disabled type="text" class="form-control" value="<?php echo $flatowner->mobile_number;?>" placeholder="Mobile number" id="mobile_number" name="mobile_number" value="">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-form-label col-md-2">{{ __('pages.email') }}</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="Email" id="email" name="email" value="<?php echo $flatowner->email;?>">
+                                                <input disabled type="text" class="form-control" placeholder="Email" id="email" name="email" value="<?php echo $flatowner->email;?>">
                                             </div>
                                         </div>
 
                                         <div class="form-group row hiden_class" >
                                             <label class="col-form-label col-md-2">{{ __('pages.permanent_address') }}</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" placeholder="Permanent Address" id="permanent_address" name="permanent_address" value="<?php echo $flatowner->permanent_address;?>">
+                                                <input disabled type="text" class="form-control" placeholder="Permanent Address" id="permanent_address" name="permanent_address" value="<?php echo $flatowner->permanent_address;?>">
                                             </div>
                                         </div>
                                       

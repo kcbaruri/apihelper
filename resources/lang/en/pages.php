@@ -82,6 +82,8 @@ return[
 
 	'add_tenant'=>'Add Tenant',
 	'new_tenant'=>'New Tenant',
+	'edit_tenant'=>'Edit Tenant',
+	'tenant_detail' =>'Tenant Detail',
 
 	'add_division'=>'Add Division',
 	'new_division'=>'New Division',
