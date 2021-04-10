@@ -216,11 +216,11 @@
                             <div class="col-6 border-right">
                                 <div class="p mb-0 bullet ">Current Month Due</div>
                                 <span
-                                    class="small text-gray">30000</span>
+                                    class="small text-gray"><?php echo $unpaidAmount; ?></span>
                             </div>
                             <div class="col-6">
                                 <div class="p mb-0 bullet green">Current Month Paid</div>
-                                <span class="small text-gray">1000000</span>
+                                <span class="small text-gray"><?php echo $paidAmount; ?></span>
                             </div>
                         </div>
                         <!-- END -->
