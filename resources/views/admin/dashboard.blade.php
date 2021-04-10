@@ -202,18 +202,16 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <!-- <div class="progress custom-progress mx-auto" data-value=''>
-                            <span class="progress-left">
-                                <span class="progress-bar account-progress-bar border-info bg-gray-white"></span>
-                            </span>
-                            <span class="progress-right">
-                                <span class="progress-bar account-progress-bar border-info bg-gray-white"></span>
-                            </span>
-                            
-                        </div> -->
+                       <div class="row text-center">
+                       <div class="col-12 ">
+                                <h1 style = "color: #CD5C5C;">Total</h1>
+                                <h1><?php echo ($unpaidAmount +  $paidAmount); ?></h1>
+                                    <br/><hr/>
+                            </div>
+                        </div> 
                         <!-- Demo info -->
-                        <div class="row text-center mt-4">
-                            <div class="col-6 border-right">
+                        <div class="row text-center">
+                            <div class="col-6 ">
                                 <div class="p mb-0 bullet ">Current Month Due</div>
                                 <span
                                     class="small text-gray"><?php echo $unpaidAmount; ?></span>

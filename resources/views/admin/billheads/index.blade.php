@@ -70,10 +70,10 @@
                                                             <a class="btn btn-sm bg-success-light" href="{{ route('admin.billheads.edit', $billhead->id) }}">
                                                                 <i class="fe fe-pencil"></i> {{ __('pages.edit') }}
                                                             </a>
-                                                            <form action="{{ route('admin.billheads.delete', $billhead->id) }}" method="post" class="btn-group">
+                                                            <!-- <form action="{{ route('admin.billheads.delete', $billhead->id) }}" method="post" class="btn-group">
                                                             {{ csrf_field() }}
                                                             <button title="Delete" type="submit" class="btn btn-sm bg-danger-light" onclick="return confirm('Are you sure you want to delete?')"><i class="fe fe-trash"></i> {{ __('pages.delete') }}&nbsp;</button>
-                                                            </form>
+                                                            </form> -->
                                                         </div>
                                                     </td>
                                                 </tr>
