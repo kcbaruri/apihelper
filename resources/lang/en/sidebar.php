@@ -8,7 +8,8 @@ return[
 	'billheads'=> "Bill Head",
 	'tenants'=> "Tenant",
 	'bills'=> "Bill Management",
-	'listofadmin'=>'List of administrator'
+	'listofadmin'=>'List of administrator',
+	'reports'=> "Reporting",
 ];
 
 ?>

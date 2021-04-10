@@ -49,27 +49,6 @@ Route::namespace('Admin')->middleware(['auth.admin', 'setlocale'])->group(functi
 	Route::get('/bills/download/{id}', 'BillController@download')->name('bills.download');
 	Route::post('/get-flats', 'LocationController@getFlats');
 
-	Route::any('/unions', 'UnionController@index')->name("unions");
-	Route::get('/unions/create', 'UnionController@create')->name('unions.create');
-	Route::get('/unions/edit/{id}', 'UnionController@edit')->name('unions.edit');
-	Route::post('/unions/update/{id}', 'UnionController@update')->name('unions.update');
-	Route::post('/unions/delete/{id}', 'UnionController@delete')->name('unions.delete');
-	Route::post('/unions/store', 'UnionController@store')->name('unions.store');
-
-	Route::any('/villages', 'VillageController@index')->name("villages");
-	Route::get('/villages/create', 'VillageController@create')->name('villages.create');
-	Route::get('/villages/edit/{id}', 'VillageController@edit')->name('villages.edit');
-	Route::post('/villages/update/{id}', 'VillageController@update')->name('villages.update');
-	Route::post('/villages/delete/{id}', 'VillageController@delete')->name('villages.delete');
-	Route::post('/villages/store', 'VillageController@store')->name('villages.store');
-
-	Route::get('/vatatypes', 'VatatypeController@index')->name("vatatypes");
-	Route::get('/vatatypes/create', 'VatatypeController@create')->name('vatatypes.create');
-	Route::get('/vatatypes/edit/{id}', 'VatatypeController@edit')->name('vatatypes.edit');
-	Route::post('/vatatypes/update/{id}', 'VatatypeController@update')->name('vatatypes.update');
-	Route::post('/vatatypes/delete/{id}', 'VatatypeController@delete')->name('vatatypes.delete');
-	Route::post('/vatatypes/store', 'VatatypeController@store')->name('vatatypes.store');
-
 	Route::any('/tenants', 'TenantController@index')->name("tenants");
 	Route::get('/tenants/create', 'TenantController@create')->name('tenants.create');
 	Route::get('/tenants/view/{id}', 'TenantController@show')->name('tenants.view');
@@ -101,8 +80,14 @@ Route::namespace('Admin')->middleware(['auth.admin', 'setlocale'])->group(functi
 	Route::get('/notification', 'NotificationController@index')->name("notification");
 	Route::delete('/notification_destroy/{id}', 'NotificationController@notification_destroy')->name("notification_destroy");
 
-	Route::any('/citizen-report', 'ReportController@getCitizenReport')->name("citizen-report");
-	Route::any('/vata-handover-report', 'ReportController@getVataHandoverReport')->name("vata-handover-report");
+	
+	//Reporting area
+	Route::any('/rptflatowner', 'ReportController@getFlatOwnerReport')->name("rptflatowner");
+	Route::get('/rptflatowner/individual', 'ReportController@getVataHandoverReport')->name("rptflatowner.individual");
+	Route::any('/rptflat', 'ReportController@getFlatReport')->name("rptflat");
+	Route::any('/rpttenant', 'ReportController@getTenantReport')->name("rpttenant");
+	Route::any('/rptbill', 'ReportController@getBillReport')->name("rptbill");
+	
 	
 	Route::get('/change-password', 'AdminController@changePassword')->name("change-password");
 	Route::post('/update-password', 'AdminController@updatePassword')->name("update-password");

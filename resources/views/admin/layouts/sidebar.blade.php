@@ -34,6 +34,16 @@
                             <li class="{{ (request()->segment(2) == 'bills') ? 'active' : '' }}">
                                 <a href="{{url('/admin/bills')}}"><i class="fe fe-document"></i> <span>{{ __('sidebar.bills') }}</span></a>
                             </li>
+
+                            <li class="submenu {{ (request()->segment(2) == 'claimType') ? 'active' : '' }}"> 
+                                <a href=""><i class="fe fe-layout"></i> <span>{{ __('sidebar.reports') }}</span><span class="menu-arrow"></span></a>
+                                <ul style="display: none;">
+                                    <li><a href="{{url('/admin/rptflatowner')}}"> <span>{{ __('reports.owner_of_flat') }}</a></li>
+                                    <li><a href="{{url('/admin/rptflat')}}"> <span>{{ __('reports.flat_flat_report') }}</a></li>
+                                    <li><a href="{{url('/admin/rpttenant')}}"> <span>{{ __('reports.tenant_report') }}</a></li>
+                                    <li><a href="{{url('/admin/rptbill')}}"> <span>{{ __('reports.bill_report') }}</a></li>
+                                </ul>
+                            </li>
                            
                         </ul>
                     </div>

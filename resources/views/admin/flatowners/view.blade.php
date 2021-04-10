@@ -25,6 +25,11 @@
                     <!-- /Page Header -->
                     
                     <div class="row">
+                    <form action="{{ route('admin.report.generateownerreport', $flatowner->id) }}" method="post" class="btn-group">
+                    {{ csrf_field() }}
+                    <button title="Delete" type="submit" class="btn btn-sm bg-danger-light" onclick="return confirm('Are you sure you want to delete?')"><i class="fe fe-trash"></i> {{ __('pages.delete') }}&nbsp;</button>
+                    </form>
+
                         <div class="col-lg-12">
                             <div class="card">
                                 
@@ -287,106 +292,5 @@ function isMaster() {
         }
 }
 
-function getDistrict(division_id, id, selected = '') {
-    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-        url: "{{url('admin/get-district')}}",
-        type: "post",
-        data: {
-            _token: CSRF_TOKEN,
-            division_id: division_id
-        },
-        success: function (json_data) {
-            var data = $.parseJSON(json_data);
-            var element = '<option value="">Select District</option>';
-
-            $.each(data, function (index, value) {
-              var s = (selected == index) ? "selected" : "";
-              element += '<option value="' + index + '" ' + s + '>' + value + '</option>';
-            });
-            $("#" + id).html(element);
-        },
-        error: function (data) {
-            console.log("Error: ", data);
-        }
-    });
-}
-
-function getThana(district_id, id, selected = '') {
-    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-        url: "{{url('admin/get-thana')}}",
-        type: "post",
-        data: {
-            _token: CSRF_TOKEN,
-            district_id: district_id
-        },
-        success: function (json_data) {
-            var data = $.parseJSON(json_data);
-            var element = '<option value="">Select Thana</option>';
-
-            $.each(data, function (index, value) {
-              var s = (selected == index) ? "selected" : "";
-              element += '<option value="' + index + '" ' + s + '>' + value + '</option>';
-            });
-            $("#" + id).html(element);
-            $('#thana_id').trigger('change');
-        },
-        error: function (data) {
-            console.log("Error: ", data);
-        }
-    });
-}
-
-function getUnion(thana_id, id, selected = '') {
-    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-    $.ajax({
-        url: "{{url('admin/get-union')}}",
-        type: "post",
-        data: {
-            _token: CSRF_TOKEN,
-            thana_id: thana_id
-        },
-        success: function (json_data) {
-            var data = $.parseJSON(json_data);
-            var element = '<option value="">Select Union</option>';
-
-            $.each(data, function (index, value) {
-              var s = (selected == index) ? "selected" : "";
-              element += '<option value="' + index + '" ' + s + '>' + value + '</option>';
-            });
-            $("#" + id).html(element);
-            $('#union_id').trigger('change');
-        },
-        error: function (data) {
-            console.log("Error: ", data);
-        }
-    });
-}
-
-function getVillage(union_id, id, selected = '') {
-var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-$.ajax({
-url: "{{url('admin/get-village')}}",
-type: "post",
-data: {
-    _token: CSRF_TOKEN,
-    union_id: union_id
-},
-success: function (json_data) {
-    var data = $.parseJSON(json_data);
-    var element = '<option value="">Select Union</option>';
-
-    $.each(data, function (index, value) {
-      var s = (selected == index) ? "selected" : "";
-      element += '<option value="' + index + '" ' + s + '>' + value + '</option>';
-    });
-    $("#" + id).html(element);
-},
-error: function (data) {
-    console.log("Error: ", data);
-}
-});
-}
 </script>
 @endsection

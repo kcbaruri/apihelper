@@ -9,7 +9,8 @@ return[
 	'billheads'=> "বিল হেড",
 	'tenants'=> "ভাড়াটিয়া",
 	'bills'=> "বিল ব্যবস্থাপনা",
-	'listofadmin'=>'প্রশাসকের তালিকা'
+	'listofadmin'=>'প্রশাসকের তালিকা',
+	'reports'=>'প্রতিবেদন'
 ];
 
 ?>

@@ -10,4 +10,9 @@ class FlatOwner extends Model {
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
    
+
+    public function flats()
+	{
+        return $this->hasMany('App\Models\Flat', 'flatowner_id', 'id');
+	}
 }

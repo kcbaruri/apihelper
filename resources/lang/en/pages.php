@@ -61,6 +61,7 @@ return[
 	'delete'=>'Delete',
 	'search'=>'Search',
 	'download'=>'Download Report',
+	'download_single'=>'Download Single Report',
 	'download_bill'=>'Download Bill',
 	'last_receiving_date'=>'Last Receiving Date',
 	'nid'=>'National Identity Number',

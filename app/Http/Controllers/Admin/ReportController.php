@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Division;
-use App\Models\District;
-use App\Models\Thana;
-use App\Models\Union;
-use App\Models\Village;
-use App\Models\Vatatype;
-use App\Models\Vatahandover;
-use App\Models\Citizen;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+
+use App\Models\BillHead;
+use App\Models\FlatOwner;
+use App\Models\Floor;
+use App\Models\Flat;
 
 use PDF;
 use DB;
@@ -20,9 +17,30 @@ use DB;
 class ReportController extends Controller
 {
 
+    public function getFlatOwnerReport(Request $request){
+       $floors = Floor::all();
+       $flats = Flat::where('floor_id', '=', $floors[0]->id)->get();
+       $flatowners = FlatOwner::all();
+       return view('admin.reports.flatowners.list', compact('flatowners', 'floors', 'flats'));
+    }
+
+    public function getFlatReport(Request $request){
+       
+        return view('admin.reports.flats.list');
+     }
+
+     public function getTenantReport(Request $request){
+       
+        return view('admin.reports.tenants.list');
+     }
+
+     public function getBillReport(Request $request){
+        return view('admin.reports.bills.list');
+     }
+
+
     public function getCitizenReport(Request $request)
     {
-
         $query = Citizen::with('vatatype','division','district','thana','union','village')->where('status','!=','-1');
 
         if($request->nid != null){             
