@@ -136,7 +136,7 @@ class FlatOwnerController extends Controller
             $flatowner->dob = date('Y-m-d',strtotime($request->input('dob')));
             $flatowner->gender = $request->input('gender');
             $flatowner->nid = $request->input('nid');
-            $flatowner->nid = $request->input('blood_group');
+            $flatowner->blood_group = $request->input('blood_group');
             $flatowner->profession_id = $request->input('profession_id');
             $flatowner->religion = $request->input('religion');
             $flatowner->mobile_number = $request->input('mobile_number');
