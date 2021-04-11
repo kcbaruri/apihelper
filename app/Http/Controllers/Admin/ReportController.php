@@ -18,9 +18,30 @@ class ReportController extends Controller
 {
 
     public function getFlatOwnerReport(Request $request){
+        $flatowners  = NULL;
+        if($request->search == "search" && $request->floor_id != 0){
+            if($request->flat_id == 0){
+                $flats = Flat::where('floor_id', '=', $request->floor_id)->get();
+            }
+            else{
+                $flats = Flat::where('floor_id', '=', $request->floor_id)->where('id', '=', $request->flat_id)->get() ;
+                             
+            }
+
+            $owner_id_array = array();
+            foreach( $flats as $flat){
+               array_push($owner_id_array, $flat->flat_owner_id);
+            }
+            
+            $flatowners = DB::table('flat_owners')->whereIn('id', $owner_id_array)->get();
+        }
+        else{
+            $flatowners = FlatOwner::all();
+        }
+       
        $floors = Floor::all();
        $flats = Flat::where('floor_id', '=', $floors[0]->id)->get();
-       $flatowners = FlatOwner::all();
+      
        return view('admin.reports.flatowners.list', compact('flatowners', 'floors', 'flats'));
     }
 
@@ -36,6 +57,11 @@ class ReportController extends Controller
 
      public function getBillReport(Request $request){
         return view('admin.reports.bills.list');
+     }
+
+     
+     public function getInOutReport(Request $request){
+        return view('admin.reports.inouts.list');
      }
 
 

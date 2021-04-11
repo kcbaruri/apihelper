@@ -7,6 +7,7 @@ return[
     'flat_flat_report' => 'ফ্লাট রিপোর্ট ',
     'tenant_report' => 'ভাড়াটিয়ার প্রতিবেদন',
     'bill_report' => ' বিলের প্রতিবেদন ',
+    'inoutreport'=> 'আগমন বহির্গমন রিপোর্ট',
 ]
 
 ?>

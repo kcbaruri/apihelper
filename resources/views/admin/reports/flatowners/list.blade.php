@@ -34,13 +34,8 @@
                                     {{ session()->get('message') }}
                                     </div>
                                     @endif
-                                    <!-- <div class="col-md-12 text-right p-0">
-                                        <a class="btn btn-primary" data-toggle="" href="{{ route('admin.flatowners.create') }}">
-                                            <i class="fa fa-plus"> </i> <span>{{ __('pages.add_new') }} </span>
-                                        </a>
-                                    </div> -->
                                     
-                                        <form action="{{ route('admin.flatowners') }}" method="get">
+                                        <form action="{{ route('admin.reports.flatowners.list') }}" method="get">
                                         <div class="table-responsive">                                              
                                                 <table width ="100%">
                                                     <tr>
@@ -61,7 +56,7 @@
                                                                     @endforeach
                                                                     </select>
                                                     </td>
-                                                    <td><button class="btn btn-primary" type="submit">{{ __('pages.search') }}</button></td>
+                                                    <td><button class="btn btn-primary" name ="search" value ="search" type="submit">{{ __('pages.search') }}</button></td>
                                                     <td><button class="btn btn-primary" type="submit">{{ __('pages.download') }}</button></td>
                                                     </tr>
                                             </table>

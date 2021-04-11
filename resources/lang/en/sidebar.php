@@ -10,6 +10,7 @@ return[
 	'bills'=> "Bill Management",
 	'listofadmin'=>'List of administrator',
 	'reports'=> "Reporting",
+	
 ];
 
 ?>

@@ -7,6 +7,7 @@ return[
     'flat_flat_report' => 'Reports of flats',
     'tenant_report' => 'Tenant Report',
     'bill_report' => 'Bills',
+    'inoutreport'=> 'In Out Report',
 ]
 
 ?>

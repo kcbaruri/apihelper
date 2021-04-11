@@ -42,6 +42,7 @@
                                     <li><a href="{{url('/admin/rptflat')}}"> <span>{{ __('reports.flat_flat_report') }}</a></li>
                                     <li><a href="{{url('/admin/rpttenant')}}"> <span>{{ __('reports.tenant_report') }}</a></li>
                                     <li><a href="{{url('/admin/rptbill')}}"> <span>{{ __('reports.bill_report') }}</a></li>
+                                    <li><a href="{{url('/admin/rptinout')}}"> <span>{{ __('reports.inoutreport') }}</a></li>
                                 </ul>
                             </li>
                            
