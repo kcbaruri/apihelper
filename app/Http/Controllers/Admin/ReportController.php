@@ -18,9 +18,13 @@ class ReportController extends Controller
 {
 
     public function getFlatOwnerReport(Request $request){
+      
         $flatowners  = NULL;
-        if($request->search == "search" && $request->floor_id != 0){
-            if($request->flat_id == 0){
+        if($request->operation_type == "search" && $request->floor_id != 0){
+            if($request->floor_id == 0 && $request->flat_id == 0){
+                $flats = Flat::all();
+            }
+            else if($request->floor_id != 0 && $request->flat_id == 0){
                 $flats = Flat::where('floor_id', '=', $request->floor_id)->get();
             }
             else{
@@ -35,6 +39,29 @@ class ReportController extends Controller
             
             $flatowners = DB::table('flat_owners')->whereIn('id', $owner_id_array)->get();
         }
+        else if($request->operation_type == "download"){
+            if($request->floor_id == 0 && $request->flat_id == 0){
+                $flats = Flat::all();
+            }
+            else if($request->floor_id != 0 && $request->flat_id == 0){
+                $flats = Flat::where('floor_id', '=', $request->floor_id)->get();
+            }
+            else{
+                $flats = Flat::where('floor_id', '=', $request->floor_id)->where('id', '=', $request->flat_id)->get() ;
+                             
+            }
+
+            $owner_id_array = array();
+            foreach( $flats as $flat){
+               array_push($owner_id_array, $flat->flat_owner_id);
+            }
+            
+            $flatowners = DB::table('flat_owners')->whereIn('id', $owner_id_array)->get();
+
+            $pdf = PDF::loadView('admin.reports.flatowners.flat_owner_info', compact('flatowners'));
+            return $pdf->download('flat_owner_info.pdf')->header('Content-Type','application/pdf');
+
+        }
         else{
             $flatowners = FlatOwner::all();
         }
@@ -43,6 +70,13 @@ class ReportController extends Controller
        $flats = Flat::where('floor_id', '=', $floors[0]->id)->get();
       
        return view('admin.reports.flatowners.list', compact('flatowners', 'floors', 'flats'));
+    }
+
+    public function getIndividualOwnerReport($id){
+        $flatowner = FlatOwner::find($id);
+
+        $pdf = PDF::loadView('admin.reports.flatowners.rptflatowner_individual', compact('flatowner'));
+        return $pdf->download('flat_owner_info.pdf')->header('Content-Type','application/pdf');
     }
 
     public function getFlatReport(Request $request){

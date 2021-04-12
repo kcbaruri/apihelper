@@ -3,7 +3,7 @@
 
   <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>Vata Receiver Report</title>
+  <title>Owner's Individual Report</title>
   <style> 
   body {
     font-family: examplefont;
@@ -24,33 +24,35 @@
          <span class="logo-text">নাজমহল ভবন</span><br/>
          <span>উত্তরা, ঢাকা।</span><br/>
          <hr/>
-         <h2 style="color:#6f6f6f;margin:0"><span>{{ __('reports.vata_receiver_rpt_header') }}</span></h2>
+         <h2 style="color:#6f6f6f;margin:0"><span>{{ __('reports.owner_info') }}</span></h2>
       </div>
 
       <table width="100%" cellpadding="5px" cellspacing="0" style="background-color: #fff;padding: 20px;border-radius: 5px;box-shadow: 0px 0px 5px 0px #8c8989;">
       
         <tr style="background-color:#C0C0C0;">
-        <th width="15%" style ="text-align: center;">{{ __('pages.tbl_sl_number_column') }}</th>
-        <th width="25%">{{ __('pages.tbl_name_column') }}</th>   
-        <th width="20%">{{ __('pages.mobile_no') }}</th>  
-        <th width="20%">{{ __('sidebar.unions') }}</th>  
-        <th width="20%">{{ __('sidebar.villages') }}</th>  
+        <td width="30%">{{ __('pages.tbl_name_column') }}</td>
+        <td width="70%"><?php echo $flatowner->name;?></td>
         </tr>
-        <?php 
-        $i = 1;
-        foreach($citizens as $var){
-            ?>
-            <tr>
-            <td width="15%" style ="text-align: center;"><?php echo $i;?></td>
-            <td width="25%"><?php echo $var->name;?></td>
-            <td width="20%"><?php echo $var->mobile;?></td>
-            <td width="20%"><?php echo $var->union->name?></td>
-            <td width="20%"><?php echo $var->village->name;?></td>
-            </tr>
-            <?php
-            $i++;
-        }
-        ?>
+        <tr>
+        <td width="30%">{{ __('pages.tbl_photo_column') }}</td>
+        <td width="70%"><?php echo asset($flatowner->photo);?></td>
+        </tr>
+
+        <tr>
+        <td width="30%">{{ __('pages.mobile') }}</td>
+        <td width="70%"><?php echo $flatowner->mobile_number;?></td>
+        </tr>
+
+        <tr>
+        <td width="30%">{{ __('pages.nid') }}</td>
+        <td width="70%"><?php echo $flatowner->nid;?></td>
+        </tr>
+
+        <tr>
+        <td width="30%">{{ __('pages.email') }}</td>
+        <td width="70%"><?php echo $flatowner->email;?></td>
+        </tr>
+        
      </table>
      
    </body>

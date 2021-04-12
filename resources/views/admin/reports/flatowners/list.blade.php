@@ -56,8 +56,8 @@
                                                                     @endforeach
                                                                     </select>
                                                     </td>
-                                                    <td><button class="btn btn-primary" name ="search" value ="search" type="submit">{{ __('pages.search') }}</button></td>
-                                                    <td><button class="btn btn-primary" type="submit">{{ __('pages.download') }}</button></td>
+                                                    <td><button class="btn btn-primary" name ="operation_type" value ="search" type="submit">{{ __('pages.search') }}</button></td>
+                                                    <td><button class="btn btn-primary" name ="operation_type", value = "download" type="submit">{{ __('pages.download') }}</button></td>
                                                     </tr>
                                             </table>
                                         </div>
@@ -95,7 +95,7 @@
                                                     <td><?php echo $flatowner->nid;?></td>
                                                     <td class="">
                                                         <div class="actions">
-                                                            <a class="btn btn-sm btn-info" href="{{ route('admin.flatowners.view', $flatowner->id) }}">
+                                                            <a class="btn btn-sm btn-info" href="{{ route('admin.reports.flatowners.rptindividual', $flatowner->id) }}">
                                                                 <i class="fe fe-eye"></i> {{ __('pages.download_single') }}
                                                             </a>
                                                         </div>

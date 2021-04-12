@@ -1,6 +1,7 @@
 <?php
 return[
     'flat_rpt_header'=> "ফ্ল্যাটের তালিকা",
+    'flat_owner_rpt_header'=> "ফ্লাট মালিকের তালিকা",
     'nazmahal'=> "নাজমহল ভবন",
     'building_address'=> "উত্তরা, ঢাকা।",
     'owner_of_flat' => 'ফ্লাট মালিকদের রিপোর্ট ',
@@ -8,6 +9,7 @@ return[
     'tenant_report' => 'ভাড়াটিয়ার প্রতিবেদন',
     'bill_report' => ' বিলের প্রতিবেদন ',
     'inoutreport'=> 'আগমন বহির্গমন রিপোর্ট',
+    'owner_info' => 'মালিকের তথ্য',
 ]
 
 ?>
