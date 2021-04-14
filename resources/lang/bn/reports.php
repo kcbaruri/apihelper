@@ -10,6 +10,7 @@ return[
     'bill_report' => ' বিলের প্রতিবেদন ',
     'inoutreport'=> 'আগমন বহির্গমন রিপোর্ট',
     'owner_info' => 'মালিকের তথ্য',
+    'tenant_name' =>'ভাড়াটিয়ার নাম',
 ]
 
 ?>

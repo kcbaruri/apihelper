@@ -10,6 +10,7 @@ return[
     'bill_report' => 'Bills',
     'inoutreport'=> 'In Out Report',
     'owner_info' => 'Owner\'s Information',
+    'tenant_name' =>'Tenant Name',
 ]
 
 ?>

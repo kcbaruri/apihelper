@@ -90,7 +90,7 @@ Route::namespace('Admin')->middleware(['auth.admin', 'setlocale'])->group(functi
 	Route::any('/rptinout', 'ReportController@getInOutReport')->name("rptinout");
 	Route::any('/reports/flatowners/list', 'ReportController@getFlatOwnerReport')->name("reports.flatowners.list");
 	Route::any('/reports/flatowners/rptindividual/{id}', 'ReportController@getIndividualOwnerReport')->name("reports.flatowners.rptindividual");
-	
+	Route::any('/reports/flats/list', 'ReportController@getFlatReport')->name("reports.flats.list");
 	
 	Route::get('/change-password', 'AdminController@changePassword')->name("change-password");
 	Route::post('/update-password', 'AdminController@updatePassword')->name("update-password");

@@ -80,8 +80,29 @@ class ReportController extends Controller
     }
 
     public function getFlatReport(Request $request){
-       
-        return view('admin.reports.flats.list');
+        $flats = NULL;
+        $floors = Floor::where('status','=', 1)->get();
+        $query = DB::table('flats')
+        ->leftJoin('floors', 'flats.floor_id', '=', 'floors.id')
+        ->leftJoin('flat_owners', 'flats.flat_owner_id', '=', 'flat_owners.id')
+        ->leftJoin('tenants', 'flats.id', '=', 'tenants.flat_id')
+        ->select('flats.*','flat_owners.name as owner_name', 'floors.id as floor_id','floors.name as floor_name','tenants.id as tenant_id','tenants.name as tenant_name');
+        
+        if($request->floor_id != 0){
+            $flats = $query->where('flats.floor_id', $request->floor_id)->orderBy('flats.id', 'ASC')->get();
+        }
+        else{
+            $flats = $query->orderBy('flats.id', 'ASC')->get();
+        }
+
+        if($request->search == "download"){
+          
+            $pdf = PDF::loadView('admin.reports.flats.flat_report', compact('flats'));
+            return $pdf->download('flat_report.pdf')->header('Content-Type','application/pdf');
+        }
+        else{
+            return view('admin.reports.flats.list', compact('flats', 'floors'));
+        }
      }
 
      public function getTenantReport(Request $request){
