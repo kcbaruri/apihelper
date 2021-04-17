@@ -11,38 +11,23 @@ class Tenant extends Model {
 	//protected $fillable = ['is_master'];
    protected $guarded = ['id', 'created_at', 'updated_at'];
 
-    /* public function vatatype()
+     public function floor()
 	{
-	return $this->belongsTo('App\Models\Vatatype', 'vata_type_id', 'id');
+	return $this->belongsTo('App\Models\Floor', 'floor_id', 'id');
 	}
 
-	public function union()
+	public function flat()
 	{
-	return $this->belongsTo('App\Models\Union', 'union_id', 'id');
+	return $this->belongsTo('App\Models\Flat', 'flat_id', 'id');
 	}
 
-	public function village()
+	public function children()
 	{
-	return $this->belongsTo('App\Models\Village', 'village_id', 'id');
+		return $this->hasMany(Tenant::class, 'id');
 	}
 
-	public function division()
+	public function parent()
 	{
-	return $this->belongsTo('App\Models\Division', 'division_id', 'id');
+		return $this->belongsTo(Tenant::class, 'id');
 	}
-
-	public function district()
-	{
-	return $this->belongsTo('App\Models\District', 'district_id', 'id');
-	}
-
-	public function thana()
-	{
-	return $this->belongsTo('App\Models\Thana', 'thana_id', 'id');
-	}
-
-	public function vatahandover()
-	{
-	return $this->hasMany('App\Models\Vatahandover', 'citizen_id', 'id');
-	} */
 }

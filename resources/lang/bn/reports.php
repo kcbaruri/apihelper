@@ -11,6 +11,10 @@ return[
     'inoutreport'=> 'আগমন বহির্গমন রিপোর্ট',
     'owner_info' => 'মালিকের তথ্য',
     'tenant_name' =>'ভাড়াটিয়ার নাম',
+    'is_head_only' => 'শুধু পরিবার প্রধান',
+    'tenant_rpt_header'=>'ভাড়াটিয়ার তালিকা',
+    'in_date' =>'In Date',
+    'out_date'=>'Out Date',
 ]
 
 ?>

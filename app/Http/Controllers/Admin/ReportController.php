@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\BillHead;
 use App\Models\FlatOwner;
 use App\Models\Floor;
+use App\Models\Tenant;
 use App\Models\Flat;
 
 use PDF;
@@ -16,7 +17,6 @@ use DB;
 
 class ReportController extends Controller
 {
-
     public function getFlatOwnerReport(Request $request){
       
         $flatowners  = NULL;
@@ -105,9 +105,65 @@ class ReportController extends Controller
         }
      }
 
+
+     public function getTenantInfo(Request $request){
+       
+        $tenants = NULL;
+
+        $query = DB::table('tenants')
+                ->select('tenants.*');
+        $info = $query->where('tenants.is_master', 1)->orderBy('tenants.id', 'ASC')->orderBy('tenants.family_head_id', 'ASC')->get();
+       
+        if($request->floor_id == 0 && $request->flat_id == 0 && $request->is_head == 'on'){
+            
+            $tenants = Tenant::where('is_master', '=', 1)->orderBy('id', 'ASC')->orderBy('family_head_id', 'ASC')->get();
+        }
+        else if($request->floor_id == 0 && $request->flat_id == 0 && $request->is_head == NULL){
+           
+            $tenants = Tenant::all();
+        }
+        else if($request->floor_id != 0 && $request->flat_id == 0 && $request->is_head == 'on'){
+           
+            $tenants = Tenant::where('floor_id', '=', $request->floor_id)->where('is_master', '=', 1)->get();
+        }
+        else if($request->floor_id != 0 && $request->flat_id == 0 && $request->is_head == NULL){
+           
+            $tenants = Tenant::where('floor_id', '=', $request->floor_id)->get();
+        }
+
+        else if($request->floor_id != 0 && $request->flat_id != 0 && $request->is_head == 'on'){
+           
+            $tenants = Tenant::where('floor_id', '=', $request->floor_id)->where('flat_id', '=', $request->flat_id)->where('is_master', '=', 1)->get();
+        }
+        else if($request->floor_id != 0 && $request->flat_id != 0 && $request->is_head == NULL){
+            $tenants = Tenant::where('floor_id', '=', $request->floor_id)->where('flat_id', '=', $request->flat_id)->get();
+        }
+        
+        return $tenants;
+     }
+
      public function getTenantReport(Request $request){
        
-        return view('admin.reports.tenants.list');
+        $tenants  = NULL;
+        if($request->operation_type == "search"){
+           $tenants = self:: getTenantInfo($request);
+        }
+        else if($request->operation_type == "download"){
+            
+            $tenants = self:: getTenantInfo($request);
+
+            $pdf = PDF::loadView('admin.reports.tenants.tenant_report', compact('tenants'));
+            return $pdf->download('tenant_report.pdf')->header('Content-Type','application/pdf');
+
+        }
+        else{
+            $tenants = Tenant::all();
+        }
+       
+       $floors = Floor::all();
+       $flats = Flat::where('floor_id', '=', $floors[0]->id)->get();
+      
+       return view('admin.reports.tenants.list', compact('tenants', 'floors', 'flats'));
      }
 
      public function getBillReport(Request $request){

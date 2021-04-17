@@ -11,6 +11,10 @@ return[
     'inoutreport'=> 'In Out Report',
     'owner_info' => 'Owner\'s Information',
     'tenant_name' =>'Tenant Name',
+    'is_head_only' => 'Family Head Only',
+    'tenant_rpt_header'=>'Tenant List',
+    'in_date' =>'In Date',
+    'out_date'=>'Out Date',
 ]
 
 ?>
