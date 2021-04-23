@@ -61,10 +61,10 @@
                                                     </td> 
                                                     <td>
                                                         <h2 class="table-avatar">
-                                                            <a href="#"><?php echo $generatedbill->flat->floor->name;?></a>
+                                                            <a href="#"><?php if(($generatedbill->flat != NULL) && ($generatedbill->flat->floor != NULL)) echo $generatedbill->flat->floor->name;?></a>
                                                         </h2>
                                                     </td>                                                    
-                                                    <td style="max-width:220px; white-space: normal;"> <span><?php echo $generatedbill->flat->name; ?></span></td>                                                    
+                                                    <td style="max-width:220px; white-space: normal;"> <span><?php if($generatedbill->flat != NULL) echo $generatedbill->flat->name; ?></span></td>                                                    
                                                     <td class="">
                                                         <div class="actions">
                                                             <a class="btn btn-sm btn-info" href="{{ route('admin.bills.show', $generatedbill->id) }}">

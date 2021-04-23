@@ -17,7 +17,7 @@
                     <div class="page-header">
                         <div class="row">
                             <div class="col">
-                                <h3 class="page-title">{{ __('pages.process_mon_bill') }}</h3>
+                                <h3 class="page-title">{{ __('pages.individual_bill_detail') }}</h3>
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{url('/admin')}}">{{ __('sidebar.bills') }}</a></li>
                                     <li class="breadcrumb-item active">{{ __('pages.individual_bill_detail') }}</li>
@@ -42,7 +42,12 @@
                                 @endforeach
                                 @endif
                                 <div class="card-body">
-                                  
+                                    <div class="col-md-12 text-right p-0">
+                                        <a class="btn btn-primary" data-toggle="" href="{{ route('admin.bills.download', $bills->id) }}">
+                                            <span>{{ __('pages.download_bill') }} </span>
+                                        </a>
+                                    </div>
+
                                         {{ csrf_field() }}
                                        
                                         <div class="form-group row">

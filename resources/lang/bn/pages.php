@@ -132,6 +132,8 @@ return[
 	'process_mon_bill' => 'মাসিক বিলের  হিসাব',
 	'billing_year' => 'বিলের বছর',
 	'billing_month' => 'বিলের মাস',
+	'from_date' => 'হইতে',
+	'to_date' => 'পর্যন্ত',
 
 	
 ];

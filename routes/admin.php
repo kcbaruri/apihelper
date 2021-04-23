@@ -40,6 +40,7 @@ Route::namespace('Admin')->middleware(['auth.admin', 'setlocale'])->group(functi
 	Route::post('/flats/store', 'FlatController@store')->name('flats.store');
 
 	Route::any('/bills', 'BillController@index')->name("bills");
+	Route::any('/bills', 'BillController@filteredlist')->name("bills.filteredlist");
 	Route::get('/bills/create', 'BillController@create')->name('bills.create');
 	Route::get('/bills/edit/{id}', 'BillController@edit')->name('bills.edit');
 	Route::post('/bills/update/{id}', 'BillController@update')->name('bills.update');

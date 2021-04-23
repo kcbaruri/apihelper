@@ -10,6 +10,7 @@ use App\Models\BillHead;
 use App\Models\FlatOwner;
 use App\Models\Floor;
 use App\Models\Tenant;
+use App\Models\Bill;
 use App\Models\Flat;
 
 use PDF;
@@ -167,7 +168,10 @@ class ReportController extends Controller
      }
 
      public function getBillReport(Request $request){
-        return view('admin.reports.bills.list');
+        $floors = Floor::all();
+        $flats = Flat::where('floor_id', '=', $floors[0]->id)->get();
+        $generatedbill = Bill::all();
+        return view('admin.reports.bills.list', compact('floors', 'flats', 'generatedbill'));
      }
 
      

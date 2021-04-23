@@ -145,6 +145,8 @@ return[
 	'process_mon_bill' => 'Process Monthly Bill',
 	'billing_year' => 'Billin Year',
 	'billing_month' => 'Billing Month',
+	'from_date' => 'From Date',
+	'to_date' => 'To Date',
 ];
 
 ?>
