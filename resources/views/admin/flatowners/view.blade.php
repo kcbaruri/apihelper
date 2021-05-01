@@ -25,9 +25,9 @@
                     <!-- /Page Header -->
                     
                     <div class="row">
-                    <form action="{{ route('admin.report.generateownerreport', $flatowner->id) }}" method="post" class="btn-group">
+                    <form  method="post" class="btn-group">
                     {{ csrf_field() }}
-                    <button title="Delete" type="submit" class="btn btn-sm bg-danger-light" onclick="return confirm('Are you sure you want to delete?')"><i class="fe fe-trash"></i> {{ __('pages.delete') }}&nbsp;</button>
+                   
                     </form>
 
                         <div class="col-lg-12">
