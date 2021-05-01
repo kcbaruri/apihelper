@@ -100,7 +100,7 @@
                                                         </h2>
                                                     </td>
                                                     <td><?php echo $flat->floor->name;?></td>
-                                                    <td style="max-width:220px; white-space: normal;"><?php  echo $flat->flatowner->name; ?></td>                                                    
+                                                    <td style="max-width:220px; white-space: normal;"><?php if($flat->flatowner != NULL)  echo  $flat->flatowner->name; ?></td>                                                    
                                                     <td class="">
                                                         <div class="actions">
                                                             <a class="btn btn-sm bg-success-light" href="{{ route('admin.flats.edit', $flat->id) }}">
