@@ -197,8 +197,6 @@ class BillController extends Controller
     }
 
     public function filteredlist(Request $request){
-       
-       // dd(date('m', strtotime($request->to_date)));
         $floors = Floor::all();
         $flats = Flat::where('floor_id', '=', $floors[0]->id)->get();
         $generatedbill = Bill::all();

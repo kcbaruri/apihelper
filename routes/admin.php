@@ -40,7 +40,7 @@ Route::namespace('Admin')->middleware(['auth.admin', 'setlocale'])->group(functi
 	Route::post('/flats/store', 'FlatController@store')->name('flats.store');
 
 	Route::any('/bills', 'BillController@index')->name("bills");
-	Route::any('/bills', 'BillController@filteredlist')->name("bills.filteredlist");
+	Route::any('/bills/filteredlist', 'BillController@filteredlist')->name("bills.filteredlist");
 	Route::get('/bills/create', 'BillController@create')->name('bills.create');
 	Route::get('/bills/edit/{id}', 'BillController@edit')->name('bills.edit');
 	Route::post('/bills/update/{id}', 'BillController@update')->name('bills.update');
@@ -87,7 +87,7 @@ Route::namespace('Admin')->middleware(['auth.admin', 'setlocale'])->group(functi
 	Route::get('/rptflatowner/individual', 'ReportController@getVataHandoverReport')->name("rptflatowner.individual");
 	Route::any('/rptflat', 'ReportController@getFlatReport')->name("rptflat");
 	Route::any('/rpttenant', 'ReportController@getTenantReport')->name("rpttenant");
-	Route::any('/rptbill', 'ReportController@getBillReport')->name("rptbill");
+	//Route::any('/rptbill', 'ReportController@getBillReport')->name("rptbill");
 	Route::any('/rptinout', 'ReportController@getInOutReport')->name("rptinout");
 	Route::any('/reports/flatowners/list', 'ReportController@getFlatOwnerReport')->name("reports.flatowners.list");
 	Route::any('/reports/flatowners/rptindividual/{id}', 'ReportController@getIndividualOwnerReport')->name("reports.flatowners.rptindividual");
